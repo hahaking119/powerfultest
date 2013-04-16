@@ -189,246 +189,56 @@
 							  </tr>
 						  </thead>   
 						  <tbody>
-							<tr>
-								<td>David R</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">普通用户</td>
+
+                           <%   for (int i = 0; i < listUser.Count; i++)
+                             {
+                                  %>
+                                 <%-- <%int i = 1;
+                                    { %>--%>
+                                <tr>
+								<td><%=listUser[i].UserName%></td>
+								<td class="center" ><%=listUser[i].Date%></td>
+								<td class="center"><%=listUser[i].Rank%></td>
 								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
+                                <%if (listUser[i].UserState == "正常")
+                                  {%>                                
+									<span class="label label-success">正常</span> </td>
+                                    <%}
+                                  else
+                                  {%>
+                                    <span class="label label-warning">冻结</span></td><%} %>
+								
 								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr><tr>
-								<td>Dave Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">VIP用户</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
+                                     <a >
+                                    <button  id = "Button3" class="btn btn-success" >
+                                    <i class="icon-eye-open icon-white"></i>
+                                    查看</button>
+                                    </a>
+                                     <a >
+                                    <button  id = "Button4" class="btn btn-warning" >
+                                    <i class="icon-check icon-white"></i>
+                                    审核</button>
+                                    </a>
+                                    <a >
+                                    <button  id = "Button1" class="btn btn-success" >
+                                    <i class="icon-pencil icon-white"></i>
+                                    解冻</button>
+                                    </a>									
+                                   <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
+                                    <a >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn btn-info" >
+                                    <i class="icon-edit icon-white"></i>
+                                    冻结</button>
+                                    </a>                             									
+                                    <a >
+                                    <button  id = "Button2" class="btn btn-inverse" >
+                                    <i class="icon-remove icon-white"></i>
+                                    删除</button>
+                                    </a>
 								</td>
 							</tr>
-							<tr>
-								<td>Brown Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">普通用户</td>
-								<td class="center">
-									<span class="label label-warning">冻结</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">普通用户</td>
-								<td class="center">
-									<span class="label">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Andro Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">普通用户</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td><td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Jhon Doe</td>
-								<td class="center">2012/06/01</td>
-								<td class="center">VIP用户</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Lorem Ipsum</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">普通用户</td>
-								<td class="center">
-									<span class="label label-warning">冻结</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>Worth Name</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">普通用户</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                           
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										审核                                            
-									</a>									
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
+                           <%  } %>
+
 						  </tbody>
 					  </table>            
 					</div>
