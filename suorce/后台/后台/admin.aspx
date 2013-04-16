@@ -210,8 +210,8 @@
 								<td class="center">
                                     <a >
     
-                                    <button  id = "Button1" class="btn btn-info" >
-                                    <i class="icon-edit icon-white"></i>
+                                    <button  id = "Button1" class="btn btn-success" >
+                                    <i class="icon-pencil icon-white"></i>
                                     解冻</button>
                                     </a>
                                     </a>									
@@ -222,8 +222,8 @@
                                     冻结</button>
                                     </a>                             									
                                     <a >
-                                    <button  id = "Button2" class="btn btn-info" >
-                                    <i class="icon-edit icon-white"></i>
+                                    <button  id = "Button2" class="btn btn-inverse" >
+                                    <i class="icon-remove icon-white"></i>
                                     删除</button>
                                     </a>
 								</td>
@@ -257,205 +257,7 @@
                                });
                                     </script>
 
-                          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-							<tr>
-								<td>David R</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-                                    <>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-                            <tr>
-								<td>Dave Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-                                          <a >
-                                    <button  id = "freeze" class="btn btn-info">
-                                    <i class="icon-edit icon-white"></i>
-                                    冻结</button>
-                                    </a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Brown Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-warning">冻结</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Andro Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Jhon Doe</td>
-								<td class="center">2012/06/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Lorem Ipsum</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-warning">冻结</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							
-							<tr>
-								<td>Worth Name</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">管理员</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
+                         					
 						  </tbody>
 					  </table>            
 					</div>
