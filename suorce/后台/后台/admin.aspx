@@ -208,26 +208,24 @@
                                     <span class="label label-warning">冻结</span></td><%} %>
 								
 								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
+                                    <a >
+    
+                                    <button  id = "Button1" class="btn btn-info" >
+                                    <i class="icon-edit icon-white"></i>
+                                    解冻</button>
+                                    </a>
+                                    </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
                                     <a >
                                     <button  id = "<%= listUser[i].UserName %>" class="btn btn-info" >
                                     <i class="icon-edit icon-white"></i>
                                     冻结</button>
+                                    </a>                             									
+                                    <a >
+                                    <button  id = "Button2" class="btn btn-info" >
+                                    <i class="icon-edit icon-white"></i>
+                                    删除</button>
                                     </a>
-                              
-                                     
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
 								</td>
 							</tr>
                            <%  } %>

@@ -34,8 +34,8 @@ namespace 后台
         public List<usersys> listUser = new List<usersys>();
         public void Page_Load(object sender, EventArgs e)
         {        
-            int i = 0; 
-            SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=B2BDB;Data Source=RAMMS");
+            int i = 0;
+            SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=B2BDB;Data Source=.");
             conn.Open();
             //MessageBox.Show("数据库连接成功", "好");
             SqlCommand cmd = new SqlCommand();

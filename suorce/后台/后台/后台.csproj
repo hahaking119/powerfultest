@@ -69,6 +69,7 @@
     <Content Include="doc\js\jquery.easing.js" />
     <Content Include="doc\js\jquery.scrollTo-1.4.2-min.js" />
     <Content Include="doc\js\script.js" />
+    <Content Include="HTMLPage1.htm" />
     <Content Include="img\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-2.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-3.gif" />
@@ -295,6 +296,7 @@
     <Content Include="js\jquery-1.4.1.min.js" />
     <Content Include="css\uniform.default.css" />
     <Content Include="css\uploadify.css" />
+    <Content Include="user.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
