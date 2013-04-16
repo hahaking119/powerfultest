@@ -233,7 +233,7 @@
                            <script type = "text/javascript">
                                $(function () {
 
-                                   $("#boxman button ").click(function (e) {
+                                   $("#boxman button  ").click(function (e) {
                                     var username=$(this).attr("id");
                                        $.ajax({
                                            type: "Post",

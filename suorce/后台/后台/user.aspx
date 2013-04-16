@@ -20,6 +20,9 @@
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
 
+
+    <script src="js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
@@ -168,7 +171,7 @@
 				</ul>
 			</div>
 			
-			<div class="row-fluid sortable">		
+			<div id="look" class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title="">
 						<h2><i class="icon-user"></i>用户列表</h2>
@@ -178,7 +181,7 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-					<div class="box-content"><table class="table table-striped table-bordered bootstrap-datatable datatable">
+					<div class="box-content"><table  id="boxman" class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
 								  <th>用户账户名</th>
@@ -210,7 +213,7 @@
 								
 								<td class="center">
                                      <a >
-                                    <button  id = "Button3" class="btn btn-success" >
+                                    <button  id = "Button3" class="btn btn-success" name="查看">
                                     <i class="icon-eye-open icon-white"></i>
                                     查看</button>
                                     </a>
@@ -246,7 +249,14 @@
 			
 			</div><!--/row-->
 
-			
+			<script type="text/javascript">
+			    $(function () {
+                	$("#boxman button").click(function () {
+			            $("#look").load("/user.htm");
+			            alert("sucess");
+			        })
+			    })
+               </script>
     
 					<!-- content ends -->
 			</div><!--/#content.span10-->
