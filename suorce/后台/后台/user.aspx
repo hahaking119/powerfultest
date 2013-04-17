@@ -380,9 +380,10 @@
                 return false;
             });
         });
-                                    </script>
+     
+      </script>
 
-    <script type = "text/javascript">
+   <script type = "text/javascript">
         $(function () {
 
             $(".btn-success").click(function () {
@@ -408,7 +409,8 @@
                 return false;
             });
         });
-                                    </script>  
+    </script> 
+     
   <script type = "text/javascript">
       $(function () {
 
@@ -435,7 +437,36 @@
               return false;
           });
       });
-                                    </script>
+   </script>
+
+  <script type = "text/javascript">
+      $(function () {
+
+          $(".btn").click(function () {
+
+              var username = $(this).attr("id");
+              $.ajax({
+                  type: "Post",
+                  url: "user.aspx/GetStr",
+                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                  data: "{ 'str': '" + username + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                     alert(data.d)
+						
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+
+              //禁用按钮的提交      
+              return false;
+          });
+      });
+      </script>
 		
 </body>
 </html>
