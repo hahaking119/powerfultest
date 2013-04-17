@@ -39,7 +39,7 @@ namespace 后台
         public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
         public void Page_Load(object sender, EventArgs e)
         {
-            int i = 0;
+            //int i = 0;
             SqlConnection conn = new SqlConnection(StrConn);
             conn.Open();
             //MessageBox.Show("数据库连接成功", "好");
