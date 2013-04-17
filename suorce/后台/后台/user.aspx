@@ -23,7 +23,9 @@
 
     <script src="js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
     <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
-	<!-- The styles -->
+	
+    
+    <!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
 	  body {
@@ -213,28 +215,28 @@
 								
 								<td class="center">
                                      <a >
-                                    <button  id = "Button3" class="btn btn-success" name="查看">
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn" name="查看">
                                     <i class="icon-eye-open icon-white"></i>
                                     查看</button>
                                     </a>
                                      <a >
-                                    <button  id = "Button4" class="btn btn-warning" >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn-warning" >
                                     <i class="icon-check icon-white"></i>
                                     审核</button>
                                     </a>
                                     <a >
-                                    <button  id = "Button1" class="btn btn-success" >
+                                    <button  id ="<%= listUser[i].UserName %>" class="btn-success" >
                                     <i class="icon-pencil icon-white"></i>
                                     解冻</button>
                                     </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
                                     <a >
-                                    <button  id = "<%= listUser[i].UserName %>" class="btnbtn-info" >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn-info" >
                                     <i class="icon-edit icon-white"></i>
                                     冻结</button>
                                     </a>                             									
                                     <a >
-                                    <button  id = "Button2" class="btn btn-inverse" >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn-inverse" >
                                     <i class="icon-remove icon-white"></i>
                                     删除</button>
                                     </a>
@@ -248,15 +250,6 @@
 				</div><!--/span-->
 			
 			</div><!--/row-->
-
-			<script type="text/javascript">
-			    $(function () {
-                	$("#boxman button").click(function () {
-			            $("#look").load("/user.htm");
-			            alert("sucess");
-			        })
-			    })
-               </script>
     
 					<!-- content ends -->
 			</div><!--/#content.span10-->
@@ -359,6 +352,90 @@
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
+
+
+    <script type = "text/javascript">
+        $(function () {
+
+            $(".btn-info").click(function () {
+
+                var username = $(this).attr("id");
+                $.ajax({
+                    type: "Post",
+                    url: "user.aspx/Freeze",
+                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                    data: "{ 'str': '" + username + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //返回的数据用data.d获取内容      
+                        alert(data.d);
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+
+                //禁用按钮的提交      
+                return false;
+            });
+        });
+                                    </script>
+
+    <script type = "text/javascript">
+        $(function () {
+
+            $(".btn-success").click(function () {
+
+                var username = $(this).attr("id");
+                $.ajax({
+                    type: "Post",
+                    url: "user.aspx/UnFreeze",
+                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                    data: "{ 'str': '" + username + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //返回的数据用data.d获取内容      
+                        alert(data.d);
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+
+                //禁用按钮的提交      
+                return false;
+            });
+        });
+                                    </script>  
+  <script type = "text/javascript">
+      $(function () {
+
+          $(".btn-inverse").click(function () {
+
+              var username = $(this).attr("id");
+              $.ajax({
+                  type: "Post",
+                  url: "user.aspx/Delete",
+                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                  data: "{ 'str': '" + username + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                      alert(data.d);
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+
+              //禁用按钮的提交      
+              return false;
+          });
+      });
+                                    </script>
 		
 </body>
 </html>

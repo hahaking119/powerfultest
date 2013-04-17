@@ -81,25 +81,28 @@ namespace 后台
             
             return "success";
         }
+
+        [WebMethod]
          public static string UnFreeze(string str)
          {
              SqlConnection conn = new SqlConnection(StrConn);
              SqlCommand cmdfreeze = new SqlCommand();
              cmdfreeze.Connection = conn;
              conn.Open();
-             cmdfreeze.CommandText = ("update [User] set UserState=正常' where UserName='" + str + "'");
+             cmdfreeze.CommandText = ("update [User] set UserState='正常' where UserName='" + str + "'");
              cmdfreeze.ExecuteNonQuery();
              conn.Close();
 
              return "success";
          }
+          [WebMethod]
          public static string Delete(string str)
          {
              SqlConnection conn = new SqlConnection(StrConn);
              SqlCommand cmdfreeze = new SqlCommand();
              cmdfreeze.Connection = conn;
              conn.Open();
-             cmdfreeze.CommandText = ("delete from User where UserName='" + str + "'");
+             cmdfreeze.CommandText = ("delete from [User] where UserName='" + str + "'");
              cmdfreeze.ExecuteNonQuery();
              conn.Close();
 

@@ -210,19 +210,21 @@
 								<td class="center">
                                     <a >
     
-                                    <button  id = "Button1" class="btn btn-success" >
+                                    <button  id ="<%= listUser[i].UserName %>" class="btn-success" >
                                     <i class="icon-pencil icon-white"></i>
                                     解冻</button>
                                     </a>
                                     </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
                                     <a >
-                                    <button  id = "<%= listUser[i].UserName %>" class="btn btn-info" >
-                                    <i class="icon-edit icon-white"></i>
+                                    <button  id = "<%= listUser[i].UserName %>"  class="btn-info"   >
+                                    <i class="icon-edit icon-white "></i>
+                                    
                                     冻结</button>
+                                        
                                     </a>                             									
                                     <a >
-                                    <button  id = "Button2" class="btn btn-inverse" >
+                                    <button  id ="<%= listUser[i].UserName %>" class="btn-inverse" >
                                     <i class="icon-remove icon-white"></i>
                                     删除</button>
                                     </a>
@@ -230,9 +232,10 @@
 							</tr>
                            <%  } %>
 
-                           <script type = "text/javascript">
-                               $(function () {
+                   
 
+<%--<<<<<<< .mine
+=======
                                    $("#boxman button  ").click(function (e) {
                                     var username=$(this).attr("id");
                                        $.ajax({
@@ -257,6 +260,7 @@
                                });
                                     </script>
 
+>>>>>>> .r8--%>
                          					
 						  </tbody>
 					  </table>            
@@ -291,6 +295,7 @@
 		<footer>
 			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
 			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
+       
 		</footer>
 		
 	</div><!--/.fluid-container-->
@@ -367,8 +372,91 @@
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
-	<script src="js/charisma.js"></script>
-		
+	<script src="js/charisma.js" type="text/javascript"></script>
+		        
+                
+                <script type = "text/javascript">
+		            $(function () {
+
+		                $(".btn-info").click(function () {
+		              
+		                    var username = $(this).attr("id");
+		                    $.ajax({
+		                        type: "Post",
+		                        url: "admin.aspx/Freeze",
+		                        //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+		                        data: "{ 'str': '" + username + "' }",
+		                        contentType: "application/json; charset=utf-8",
+		                        dataType: "json",
+		                        success: function (data) {
+		                            //返回的数据用data.d获取内容      
+		                            alert(data.d);
+		                        },
+		                        error: function (err) {
+		                            alert(err);
+		                        }
+		                    });
+
+		                    //禁用按钮的提交      
+		                    return false;
+		                });
+		            });
+                                    </script>
+
+    <script type = "text/javascript">
+      $(function () {
+
+          $(".btn-success").click(function () {
+
+              var username = $(this).attr("id");
+              $.ajax({
+                  type: "Post",
+                  url: "admin.aspx/UnFreeze",
+                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                  data: "{ 'str': '" + username + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                      alert(data.d);
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+
+              //禁用按钮的提交      
+              return false;
+          });
+      });
+                                    </script>  
+  <script type = "text/javascript">
+      $(function () {
+
+          $(".btn-inverse").click(function () {
+
+              var username = $(this).attr("id");
+              $.ajax({
+                  type: "Post",
+                  url: "admin.aspx/Delete",
+                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                  data: "{ 'str': '" + username + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                      alert(data.d);
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+
+              //禁用按钮的提交      
+              return false;
+          });
+      });
+                                    </script>
 </body>
 </html>
 
