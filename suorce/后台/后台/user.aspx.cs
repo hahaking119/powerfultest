@@ -99,5 +99,18 @@ namespace 后台
 
             return "success";
         }
+          [WebMethod]
+        public static string UNPass(string str)
+        {
+            SqlConnection conn = new SqlConnection(StrConn);
+            SqlCommand cmdfreeze = new SqlCommand();
+            cmdfreeze.Connection = conn;
+            conn.Open();
+            cmdfreeze.CommandText = ("update [User] set UserState='审核未通过' where UserName='" + str + "'");
+            cmdfreeze.ExecuteNonQuery();
+            conn.Close();
+
+            return "success";
+        }
     }
 }
