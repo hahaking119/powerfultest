@@ -39,9 +39,9 @@
 	  }
 	  .window{ 
      width:500px; 
-     background-color:#d0def0; 
+     background-color:white; 
      position:absolute; 
-     padding:2px; 
+     padding:3px; 
      margin:5px; 
      display:none; 
      } 
@@ -244,7 +244,7 @@
 								
 								<td class="center">
                                      <a >
-                                    <button  id = "<%= listUser[i].UserName %>" class="btn" name="查看">
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn-primary" name="查看">
                                     <i class="icon-eye-open icon-white"></i>
                                     查看</button>
                                     </a>
@@ -468,13 +468,41 @@
       });
    </script>
 
- <script type="text/javascript">
+
+ <script type = "text/javascript">
+     $(function () {
+
+         $(".btn-primary").click(function () {
+
+             var username = $(this).attr("id");
+             $.ajax({
+                 type: "Post",
+                 url: "user.aspx/GetStr",
+                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                 data: "{ 'str': '" + username + "' }",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     //返回的数据用data.d获取内容      
+                     popCenterWindow();
+                 },
+                 error: function (err) {
+                     alert(err);
+                 }
+             });
+
+             //禁用按钮的提交      
+             return false;
+         });
+     });
+   </script>
+ <%--<script type="text/javascript">
      $ ( function () {
-         $(".btn").click(function () {
+         $(".btn-primary").click(function () {
              popCenterWindow();
          });
         });
-  </script>
+  </script>--%>
 
 <script type="text/javascript">
     //获取窗口的高度 
@@ -511,11 +539,17 @@
 </script>
  
  <div class="window" id="center"> 
- <div id="title" class="box-header well"><a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>用户详细信息</div> 
- <div class="content">	<table><td class="center" ><%=listUser[2].Date%></td>
-						<td class="center"><%=listUser[2].Rank%></td></table></div> 
+ <div id="title" class="title">
+                            <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />计划 博客园-居中窗口</div>
+ <div class="box-content"><h1>用户名称：Charisma <small>free, premium quality, responsive, multiple skin admin template.</small></h1>
+						<p>Its a live demo of the template. I have created Charisma to ease the repeat work I have to do on my projects. Now I re-use Charisma as a base for my admin panel work and I am sharing it with you :)</p>
+						<p><b>All pages in the menu are functional, take a look at all, please share this with your followers.</b></p>
+						
+						<p class="center">
+							<a href="user.aspx" class="btn btn-large btn-primary"><i class="icon-chevron-left icon-white"></i> 返回</a> 
+							<a href="http://usman.it/free-responsive-admin-template" class="btn btn-large"><i class="icon-download-alt"></i> 审核通过</a>
+						</p>
+						<div class="clearfix"></div></div> 
     </div> 
 
  
