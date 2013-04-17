@@ -23,8 +23,11 @@
 
     <script src="js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
     <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
-	
-    
+	 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>  
+    <script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
@@ -34,7 +37,33 @@
 	  .sidebar-nav {
 		padding: 9px 0;
 	  }
+	  .window{ 
+     width:500px; 
+     background-color:#d0def0; 
+     position:absolute; 
+     padding:2px; 
+     margin:5px; 
+     display:none; 
+     } 
+     .content{ 
+     height:400px; 
+     background-color:#FFF; 
+     font-size:14px; 
+     overflow:auto; 
+     } 
+     .title{ 
+         padding:2px; 
+         color:#0CF; 
+         font-size:14px; 
+         } 
+     .title img{ 
+         float:right; 
+         } 
 	</style>
+
+
+
+
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/charisma-app.css" rel="stylesheet">
 	<link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
@@ -439,34 +468,57 @@
       });
    </script>
 
-  <script type = "text/javascript">
-      $(function () {
+ <script type="text/javascript">
+     $ ( function () {
+         $(".btn").click(function () {
+             popCenterWindow();
+         });
+        });
+  </script>
 
-          $(".btn").click(function () {
+<script type="text/javascript">
+    //获取窗口的高度 
+    var windowHeight;
+    //获取窗口的宽度 
+    var windowWidth;
+    //获取弹窗的宽度 
+    var popWidth;
+    //获取弹窗高度 
+    var popHeight;
+    function init() {
+        windowHeight = $(window).height();
+        windowWidth = $(window).width();
+        popHeight = $(".window").height();
+        popWidth = $(".window").width();
+    }
+    //关闭窗口的方法 
+    function closeWindow() {
+        $(".title img").click(function () {
+            $(this).parent().parent().hide("slow");
+        });
+    }
+    //定义弹出居中窗口的方法 
+    function popCenterWindow() {
+        init();
+        //计算弹出窗口的左上角Y的偏移量 
+        var popY = (windowHeight - popHeight) / 2;
+        var popX = (windowWidth - popWidth) / 2;
+        //alert('jihua.cnblogs.com'); 
+        //设定窗口的位置 
+        $("#center").css("top", popY).css("left", popX).slideToggle("slow");
+        closeWindow();
+    } 
+</script>
+ 
+ <div class="window" id="center"> 
+ <div id="title" class="box-header well"><a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>用户详细信息</div> 
+ <div class="content">	<table><td class="center" ><%=listUser[2].Date%></td>
+						<td class="center"><%=listUser[2].Rank%></td></table></div> 
+    </div> 
 
-              var username = $(this).attr("id");
-              $.ajax({
-                  type: "Post",
-                  url: "user.aspx/GetStr",
-                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                  data: "{ 'str': '" + username + "' }",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (data) {
-                      //返回的数据用data.d获取内容      
-                     alert(data.d)
-						
-                  },
-                  error: function (err) {
-                      alert(err);
-                  }
-              });
-
-              //禁用按钮的提交      
-              return false;
-          });
-      });
-      </script>
-		
+ 
+  
 </body>
 </html>
