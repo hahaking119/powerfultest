@@ -211,7 +211,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -242,7 +242,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -273,7 +273,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -303,7 +303,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -333,7 +333,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -363,7 +363,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -393,7 +393,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -423,7 +423,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -453,7 +453,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -483,7 +483,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -513,7 +513,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -543,7 +543,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -573,7 +573,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -603,7 +603,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -633,7 +633,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -663,7 +663,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -693,7 +693,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -723,7 +723,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -753,7 +753,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -783,7 +783,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -813,7 +813,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -843,7 +843,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -873,7 +873,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -903,7 +903,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -933,7 +933,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -963,7 +963,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -993,7 +993,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -1023,7 +1023,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -1053,7 +1053,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -1083,7 +1083,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -1113,7 +1113,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>
@@ -1143,7 +1143,7 @@
 										<i class="icon-pencil icon-white"></i>  
 										审核                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										冻结                                            
 									</a>

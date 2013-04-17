@@ -46,7 +46,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -68,7 +68,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -90,7 +90,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -112,7 +112,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -134,7 +134,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -156,7 +156,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -178,7 +178,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -200,7 +200,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -222,7 +222,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -244,7 +244,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -266,7 +266,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -288,7 +288,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -310,7 +310,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -332,7 +332,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -354,7 +354,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -376,7 +376,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -398,7 +398,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -420,7 +420,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -442,7 +442,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -464,7 +464,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -486,7 +486,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -508,7 +508,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -530,7 +530,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -552,7 +552,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -574,7 +574,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -596,7 +596,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -618,7 +618,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -640,7 +640,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -662,7 +662,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -684,7 +684,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -706,7 +706,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>
@@ -728,7 +728,7 @@
 										<i class="icon-zoom-in icon-white"></i>  
 										View                                            
 									</a>
-									<a class="btn btn-info" href="#">
+									<a class="btnbtn-info" href="#">
 										<i class="icon-edit icon-white"></i>  
 										Edit                                            
 									</a>

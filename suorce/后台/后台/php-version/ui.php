@@ -69,7 +69,7 @@
 							<tr>
 								<td><h3>Dialog</h3></td>
 								<td>
-									<a href="#" class="btn btn-info btn-setting">Click for dialog</a>
+									<a href="#" class="btnbtn-info btn-setting">Click for dialog</a>
 								</td>
 								<td></td>
 							</tr>

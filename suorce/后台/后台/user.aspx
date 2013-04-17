@@ -229,7 +229,7 @@
                                     </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
                                     <a >
-                                    <button  id = "<%= listUser[i].UserName %>" class="btn btn-info" >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btnbtn-info" >
                                     <i class="icon-edit icon-white"></i>
                                     冻结</button>
                                     </a>                             									
