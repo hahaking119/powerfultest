@@ -13,3 +13,8 @@ C:\Users\moxiongjian\Desktop\powerfultest\suorce\后台\后台\bin\后台.pdb
 C:\Users\moxiongjian\Desktop\powerfultest\suorce\后台\后台\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\moxiongjian\Desktop\powerfultest\suorce\后台\后台\obj\Debug\后台.dll
 C:\Users\moxiongjian\Desktop\powerfultest\suorce\后台\后台\obj\Debug\后台.pdb
+C:\Users\Administrator\Desktop\powerfultest\suorce\后台\后台\bin\后台.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\后台\后台\bin\后台.pdb
+C:\Users\Administrator\Desktop\powerfultest\suorce\后台\后台\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\powerfultest\suorce\后台\后台\obj\Debug\后台.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\后台\后台\obj\Debug\后台.pdb
