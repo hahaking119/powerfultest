@@ -25,7 +25,7 @@
     <br />
     <asp:Label ID="lbDate" runat="server" Text="Date"></asp:Label>
     <br />
-    <asp:Label ID="lbTime" runat="server" Text="Time"></asp:Label>
+    <asp:Label ID="lbCost" runat="server" Text="Cost"></asp:Label>
     </form>
 </body>
 </html>

@@ -12,17 +12,14 @@ namespace 后台
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                //Pass
-            }
+
         }
 
         protected void btnCommit_Click(object sender, EventArgs e)
         {
             //Add some comments for GB2312 encoding
             string ContractNo = tboxDate.Text;
-            string filename = System.Web.HttpContext.Current.Server.MapPath(ContractNo + ".xml");
+            string filename = System.Web.HttpContext.Current.Server.MapPath("/contracts/"+ ContractNo + ".xml");
             XmlDocument doc = new XmlDocument();
             XmlDeclaration xmldecl;
             xmldecl = doc.CreateXmlDeclaration("1.0", "gb2312", null);
@@ -49,17 +46,13 @@ namespace 后台
         protected void btnRead_Click(object sender, EventArgs e)
         {
             XmlDocument ReadDoc = new XmlDocument();
-            string filepath = System.Web.HttpContext.Current.Server.MapPath(tboxNo.Text + ".xml");
+            string filepath = System.Web.HttpContext.Current.Server.MapPath("/contracts/" + tboxNo.Text + ".xml");
             ReadDoc.Load(filepath);
             XmlNode root = ReadDoc.SelectSingleNode("ContractInfo");
 
             //and then read child nodes
-            foreach (XmlNode rn in root.ChildNodes)
-            {
-                tboxCost.Text = rn.SelectSingleNode("Date").ChildNodes[0].InnerText.ToString();
-
-            }
-
+            lbCost.Text = root.ChildNodes[0].Attributes[0].Value;
+            lbDate.Text = root.ChildNodes[1].Attributes[0].Value;
 
         }
     }
