@@ -8,18 +8,27 @@ using System.Xml;
 
 namespace 后台
 {
+    public class ContractNoManagement : System.Web.UI.Page
+    {
+        public string getContractNo()
+        {
+            string labeltext;
+            labeltext = DateTime.Now.Year.ToString();
+            labeltext += DateTime.Now.Month.ToString();
+            labeltext += DateTime.Now.Day.ToString();
+            labeltext += "." + DateTime.Now.Hour.ToString();
+            labeltext += DateTime.Now.Minute.ToString();
+            labeltext += DateTime.Now.Second.ToString();
+            labeltext += "." + DateTime.Now.Millisecond.ToString();
+            return labeltext;
+        }
+    }
     public partial class ContractMgr : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbContractNo.Text = DateTime.Now.Year.ToString();
-            lbContractNo.Text += DateTime.Now.Month.ToString();
-            lbContractNo.Text += DateTime.Now.Day.ToString();
-            lbContractNo.Text += "." + DateTime.Now.Hour.ToString();
-            lbContractNo.Text += DateTime.Now.Minute.ToString();
-            lbContractNo.Text += DateTime.Now.Second.ToString();
-            lbContractNo.Text += "." + DateTime.Now.Millisecond.ToString();
-            
+            ContractNoManagement cnm = new ContractNoManagement();
+            lbContractNo.Text = cnm.getContractNo();
         }
 
         protected void btnCommit_Click(object sender, EventArgs e)
@@ -43,6 +52,23 @@ namespace 后台
             xe1.SetAttribute("Money", tboxCost.Text);
             XmlElement xe2 = doc.CreateElement("Timestamp");
             xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            //XmlElement xe2 = doc.CreateElement("Timestamp");
+            //xe2.SetAttribute("Date", tboxDate.Text);
+            
             root.AppendChild(xe1);
             root.AppendChild(xe2);
   
