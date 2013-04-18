@@ -64,7 +64,7 @@ namespace 后台
             /*TextBox1.Text = UserName[1];*/
             reader.Close();
             conn.Close();
-            Check("ueiwfh");
+            //Check("莫雄剑");
         }
         [WebMethod]
         public static string GetStr(string str)
@@ -125,7 +125,7 @@ namespace 后台
 
             return "success";
         }
-         // [WebMethod]
+         [WebMethod]
           public static void Check(string str)
           {
               SqlConnection conn = new SqlConnection(StrConn);
@@ -155,7 +155,7 @@ namespace 后台
               /*TextBox1.Text = UserName[1];*/
               reader.Close();
               conn.Close();
-              MessageBox.Show(listUserDetail[0].CompanyName);
+             
           }
     }
 }

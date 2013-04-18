@@ -545,9 +545,9 @@
   <div class="window" id="center"> 
  <div id="title" class="title">
                             <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
- <div class="box-content"><h1 class="center">公司名称：afdsafas <small>用户名：莫雄剑</small></h1>
+ <div class="box-content"><h1 class="center">公司名称：<%= listUserDetail[1].CompanyName %> <small>用户名：莫雄剑</small></h1>
                          <br>
-						<h2>公司邮箱：670142057@qq.com</h2>
+						<h2>公司邮箱：<%= listUserDetail[1].Eail %></h2>
                         <h2>公司电话：18986115756</h2>
                         <h2>公司地址：湖北省武汉市洪山区时间广场纽宾凯20楼</h2>
                         <h2>负责人：莫雄剑</h2>
