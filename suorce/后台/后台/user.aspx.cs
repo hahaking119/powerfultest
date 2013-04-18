@@ -64,7 +64,7 @@ namespace 后台
             /*TextBox1.Text = UserName[1];*/
             reader.Close();
             conn.Close();
-            Check("");
+            Check("ueiwfh");
         }
         [WebMethod]
         public static string GetStr(string str)
