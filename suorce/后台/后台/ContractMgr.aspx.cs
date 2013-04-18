@@ -12,13 +12,20 @@ namespace 后台
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbContractNo.Text = DateTime.Now.Year.ToString();
+            lbContractNo.Text += DateTime.Now.Month.ToString();
+            lbContractNo.Text += DateTime.Now.Day.ToString();
+            lbContractNo.Text += "." + DateTime.Now.Hour.ToString();
+            lbContractNo.Text += DateTime.Now.Minute.ToString();
+            lbContractNo.Text += DateTime.Now.Second.ToString();
+            lbContractNo.Text += "." + DateTime.Now.Millisecond.ToString();
+            
         }
 
         protected void btnCommit_Click(object sender, EventArgs e)
         {
             //Add some comments for GB2312 encoding
-            string ContractNo = tboxDate.Text;
+            string ContractNo = lbContractNo.Text;
             string filename = System.Web.HttpContext.Current.Server.MapPath("/contracts/"+ ContractNo + ".xml");
             XmlDocument doc = new XmlDocument();
             XmlDeclaration xmldecl;
