@@ -12,17 +12,18 @@ using System.Web.Services;
 
 namespace 后台
 {
-    public class userdetailsys
-    {
+    //public class userdetailsys
+    //{
 
-        public string CompanyName;
-        public string CompanyAddress;
-        public string Email;
-        public string CompanyTel;
-        public string Principal;
-        public string Phone;
-        public string Description;
-    }
+    //    public string CompanyName;
+    //    public string CompanyAddress;
+    //    public string Email;
+    //    public string CompanyTel;
+    //    public string Principal;
+    //    public string Phone;
+    //    public string Description;
+    //}
+       
 
     public partial class WebForm4 : System.Web.UI.Page
     {
@@ -33,10 +34,17 @@ namespace 后台
         // public string[] Rank = new string[2000]; 
         // public string[] UserState = new string[2000];
         //public  ArrayList arll = new ArrayList();
+        public static string CompanyName;
+        public static string CompanyAddress;
+        public static string Email;
+        public static string CompanyTel;
+        public static string Principal;
+        public static string Phone;
+        public static string Description;
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
 
         public List<usersys> listUser = new List<usersys>();
-        public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
+        //public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
         public void Page_Load(object sender, EventArgs e)
         {
             //int i = 0;
@@ -126,8 +134,9 @@ namespace 后台
             return "success";
         }
          [WebMethod]
-          public static void Check(string str)
+          public static string Check(string str)
           {
+              
               SqlConnection conn = new SqlConnection(StrConn);
               conn.Open();
               //MessageBox.Show("数据库连接成功", "好");
@@ -138,16 +147,16 @@ namespace 后台
               
               while (reader.Read())
               {
-
-                  userdetailsys d = new userdetailsys();
-                  d.CompanyName = reader["CompanyName"].ToString();
-                  d.CompanyAddress=reader["CompanyAddress"].ToString();
-                  d.CompanyTel=reader["CompanyTel"].ToString();
-                  d.Principal=reader["Principal"].ToString();
-                  d.Email=reader["Email"].ToString();
-                  d.Phone=reader["Phone"].ToString();
-                  d.Description=reader["Description"].ToString();
-                  listUserDetail.Add(d);
+                  
+                  //userdetailsys d = new userdetailsys();
+                  CompanyName = reader["CompanyName"].ToString();
+                  CompanyAddress = reader["CompanyAddress"].ToString();
+                  CompanyTel = reader["CompanyTel"].ToString();
+                  Principal = reader["Principal"].ToString();
+                  Email = reader["Email"].ToString();
+                  Phone = reader["Phone"].ToString();
+                  Description = reader["Description"].ToString();
+                  //listUserDetail.Add(d);
 
                   /*  TextBox1.Text = reader["UserName"].ToString();*/
               }
@@ -155,6 +164,7 @@ namespace 后台
               /*TextBox1.Text = UserName[1];*/
               reader.Close();
               conn.Close();
+              return CompanyName;
              
           }
     }
