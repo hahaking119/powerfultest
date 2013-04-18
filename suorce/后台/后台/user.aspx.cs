@@ -64,6 +64,7 @@ namespace 后台
             /*TextBox1.Text = UserName[1];*/
             reader.Close();
             conn.Close();
+            Check("ueiwfh");
         }
         [WebMethod]
         public static string GetStr(string str)
@@ -124,7 +125,7 @@ namespace 后台
 
             return "success";
         }
-          [WebMethod]
+         // [WebMethod]
           public static void Check(string str)
           {
               SqlConnection conn = new SqlConnection(StrConn);
@@ -132,13 +133,13 @@ namespace 后台
               //MessageBox.Show("数据库连接成功", "好");
               SqlCommand cmd = new SqlCommand();
               cmd.Connection = conn;
-              cmd.CommandText = "Select * FROM [UserDetail] where UserId=(Select UserId From [User] where UserName='" + str + "')";
+              cmd.CommandText = "Select * FROM [UserDetail] WHERE [UserDetail].UserId=(Select UserId FROM [User] where UserName='" + str + "')";
               SqlDataReader reader = cmd.ExecuteReader();
-
+              userdetailsys d = new userdetailsys();
               while (reader.Read())
               {
 
-                  userdetailsys d = new userdetailsys();
+                  
                   d.CompanyName = reader["CompanyName"].ToString();
                   d.CompanyAddress=reader["CompanyAddress"].ToString();
                   d.CompanyTel=reader["CompanyTel"].ToString();
@@ -154,6 +155,7 @@ namespace 后台
               /*TextBox1.Text = UserName[1];*/
               reader.Close();
               conn.Close();
+              MessageBox.Show(listUserDetail[0].CompanyName);
           }
     }
 }
