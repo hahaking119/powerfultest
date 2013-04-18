@@ -38,7 +38,7 @@
 		padding: 9px 0;
 	  }
 	  .window{ 
-     width:500px; 
+     width:600px; 
      background-color:white; 
      position:absolute; 
      padding:3px; 
@@ -399,6 +399,7 @@
                     success: function (data) {
                         //返回的数据用data.d获取内容      
                         alert(data.d);
+                        $("#look").html(result);
                     },
                     error: function (err) {
                         alert(err);
@@ -477,7 +478,7 @@
              var username = $(this).attr("id");
              $.ajax({
                  type: "Post",
-                 url: "user.aspx/GetStr",
+                 url: "user.aspx/Check",
                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
                  data: "{ 'str': '" + username + "' }",
                  contentType: "application/json; charset=utf-8",
@@ -540,9 +541,17 @@
  
  <div class="window" id="center"> 
  <div id="title" class="title">
-                            <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />计划 博客园-居中窗口</div>
- <div class="box-content"><h1>用户名称：Charisma <small>free, premium quality, responsive, multiple skin admin template.</small></h1>
-						<p>Its a live demo of the template. I have created Charisma to ease the repeat work I have to do on my projects. Now I re-use Charisma as a base for my admin panel work and I am sharing it with you :)</p>
+                            <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
+ <div class="box-content"><h1 class="center">公司名称：软酷网络 <small>用户名：莫雄剑</small></h1>
+                         <br>
+						<h2>公司邮箱：670142057@qq.com</h2>
+                        <h2>公司电话：18986115756</h2>
+                        <h2>公司地址：湖北省武汉市洪山区时间广场纽宾凯20楼</h2>
+                        <h2>负责人：莫雄剑</h2>
+                        <h2>负责人联系电话：18986115756</h2>
+                        <h2>公司简介：<small>All pages in the menu are functional, take a look at all, please share this with your followers.</small></h2>
+
+
 						<p><b>All pages in the menu are functional, take a look at all, please share this with your followers.</b></p>
 						
 						<p class="center">
