@@ -399,7 +399,7 @@
                     success: function (data) {
                         //返回的数据用data.d获取内容      
                         alert(data.d);
-                        $("#look").html(result);
+                        $(".look").reload();
                     },
                     error: function (err) {
                         alert(err);
@@ -486,6 +486,9 @@
                  success: function (data) {
                      //返回的数据用data.d获取内容      
                      popCenterWindow();
+                     
+
+ 
                  },
                  error: function (err) {
                      alert(err);
@@ -539,10 +542,10 @@
     } 
 </script>
  
- <div class="window" id="center"> 
+  <div class="window" id="center"> 
  <div id="title" class="title">
                             <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
- <div class="box-content"><h1 class="center">公司名称：软酷网络 <small>用户名：莫雄剑</small></h1>
+ <div class="box-content"><h1 class="center">公司名称：afdsafas <small>用户名：莫雄剑</small></h1>
                          <br>
 						<h2>公司邮箱：670142057@qq.com</h2>
                         <h2>公司电话：18986115756</h2>
@@ -560,8 +563,6 @@
 						</p>
 						<div class="clearfix"></div></div> 
     </div> 
-
- 
   
 </body>
 </html>
