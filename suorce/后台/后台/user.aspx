@@ -218,7 +218,7 @@
 								  <th>用户账户名</th>
 								  <th>注册日期</th>
 								  <th>类型</th>
-								  <th>状态</th>
+								  <th id="state">状态</th>
 								  <th>操作</th>
 							  </tr>
 						  </thead>   
@@ -397,9 +397,26 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
+
                         //返回的数据用data.d获取内容      
-                        alert(data.d);
-                        $(".look").reload();
+                       $("#look").load("shuaxin.aspx");
+//                        ({
+//                            //要用post方式      
+//                            type: "post",
+//                            //方法所在页面和方法名      
+//                            url: "user.aspx/load",
+//                            contentType: "application/json; charset=utf-8",
+//                            dataType: "json"
+
+//                        });
+
+
+                        //                        window.parent.location.reload();
+                        //                        $("#look").location.reload();
+                        //                        $("#divid").html(d)
+                        //                        $("#look").html($("#look").html());
+                        //                        parent.location.reload();
+
                     },
                     error: function (err) {
                         alert(err);
@@ -457,6 +474,8 @@
                   success: function (data) {
                       //返回的数据用data.d获取内容      
                       alert(data.d);
+
+
                   },
                   error: function (err) {
                       alert(err);
@@ -487,11 +506,9 @@
                      //返回的数据用data.d获取内容      
 
 
-                     $("#ruanko").text(data.d);
-                     popCenterWindow();
-
-
-
+//                     $("#ruanko").text(data.d);
+                     popCenterWindow();                     
+                      
                  },
                  error: function (err) {
                      alert(err);
@@ -545,17 +562,17 @@
     } 
 </script>
  
-  <div class="window" id="center"> 
+ <div class="window" id="center"> 
  <div id="title" class="title">
                             <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
- <div class="box-content"><h1 class="center" id="ruanko">公司名称<small>用户名：莫雄剑</small></h1>
+ <div class="box-content"><h1 class="center" id="ruanko">公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
                          <br>
-						<h2>公司邮箱：xxx</h2>
-                        <h2>公司电话：18986115756</h2>
-                        <h2>公司地址：湖北省武汉市洪山区时间广场纽宾凯20楼</h2>
-                        <h2>负责人：莫雄剑</h2>
-                        <h2>负责人联系电话：18986115756</h2>
-                        <h2>公司简介：<small>All pages in the menu are functional, take a look at all, please share this with your followers.</small></h2>
+						<h2>公司邮箱：<% = Email %></h2>
+                        <h2>公司电话：<% = CompanyTel %></h2>
+                        <h2>公司地址：<% = CompanyAddress %></h2>
+                        <h2>负责人: <% = Principal %></h2>
+                        <h2>负责人联系电话：<% =Phone %>></h2>
+                        <h2>公司简介：<small><% = Description %>ll pages in the menu are functional, take a look at all, please share this with your followers.</small></h2>
 
 
 						<p><b>All pages in the menu are functional, take a look at all, please share this with your followers.</b></p>

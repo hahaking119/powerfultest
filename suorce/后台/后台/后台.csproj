@@ -338,6 +338,7 @@
     <Content Include="user.aspx" />
     <Content Include="route.aspx" />
     <Content Include="contract.aspx" />
+    <Content Include="shuaxin.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -441,6 +442,13 @@
     </Compile>
     <Compile Include="contract.aspx.designer.cs">
       <DependentUpon>contract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shuaxin.aspx.cs">
+      <DependentUpon>shuaxin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shuaxin.aspx.designer.cs">
+      <DependentUpon>shuaxin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

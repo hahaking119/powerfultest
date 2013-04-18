@@ -47,6 +47,11 @@ namespace 后台
         //public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
         public void Page_Load(object sender, EventArgs e)
         {
+            load();
+        }
+        [WebMethod]
+        public void load()
+        {
             //int i = 0;
             SqlConnection conn = new SqlConnection(StrConn);
             conn.Open();
@@ -134,7 +139,7 @@ namespace 后台
             return "success";
         }
          [WebMethod]
-          public static string Check(string str)
+          public static void Check(string str)
           {
               
               SqlConnection conn = new SqlConnection(StrConn);
@@ -164,7 +169,7 @@ namespace 后台
               /*TextBox1.Text = UserName[1];*/
               reader.Close();
               conn.Close();
-              return CompanyName;
+              //return CompanyName;
              
           }
     }
