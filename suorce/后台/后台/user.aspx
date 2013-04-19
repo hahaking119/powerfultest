@@ -61,7 +61,9 @@
          } 
 	</style>
 
-
+     <style type="text/css">
+        #msg{ font-size:16px; margin-top:20px;}
+    </style>
 
 
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -458,8 +460,48 @@
             });
         });
     </script> 
+<script type="text/javascript" language="javascript">
+        $(function () {
+            $("#dialog:ui-dialog").dialog("destroy");
+            $(".btn-inverse").click(function () {
+                $("#msg").show();
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: 140,
+                    modal: true,
+                    buttons: {
+                        "删除": function () {
+                            var username = $(".btn-inverse").attr("id");
+                            $.ajax({
+                                type: "Post",
+                                url: "user.aspx/Delete",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    $(this).dialog("close");
+
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+
+                        },
+                        "取消": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
      
-  <script type = "text/javascript">
+  <%--<script type = "text/javascript">
       $(function () {
 
           $(".btn-inverse").click(function () {
@@ -487,7 +529,7 @@
               return false;
           });
       });
-   </script>
+   </script>--%>
 
 
  <script type = "text/javascript">
@@ -567,7 +609,7 @@
  <div id="title" class="title">
                             <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
  <div class="box-content"><h1 class="center" id="ruanko">公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
-                         <br>
+                        <br>
 						<h2>公司邮箱：<% = Email %></h2>
                         <h2>公司电话：<% = CompanyTel %></h2>
                         <h2>公司地址：<% = CompanyAddress %></h2>
@@ -584,6 +626,10 @@
 						</p>
 						<div class="clearfix"></div></div> 
     </div> 
-  
+   <div id="dialog-confirm" title="删除提示?">
+        <p id="msg" style="display: none;">
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            确认要删除吗？</p>
+    </div>
 </body>
 </html>

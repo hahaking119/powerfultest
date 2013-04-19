@@ -190,6 +190,7 @@
                   success: function (data) {
                       //返回的数据用data.d获取内容      
                       alert(data.d);
+                      $("#look").load("shuaxin.apsx");
 
 
                   },
@@ -220,11 +221,14 @@
                  dataType: "json",
                  success: function (data) {
                      //返回的数据用data.d获取内容      
-
+                     //                     $("#center").html(" ")
+                     //                     $("#ruanku").load(location.href + ' #ruanku>*');
 
                      //                     $("#ruanko").text(data.d);
-                     popCenterWindow();
-
+                     $("#look").load("shuaxin.aspx");
+                     setTimeout("popCenterWindow()",1000);
+                     //                     popCenterWindow();
+//                     popCenterWindow();
                  },
                  error: function (err) {
                      alert(err);
@@ -285,7 +289,7 @@
     } 
 </script>
  --%>
- <%--<div class="window" id="center"> 
+ <div class="window" id="center"> 
  <div id="title" class="title">
                             <img src="" alt="关闭" />用户详情</div>
  <div class="box-content"><h1 class="center" id="ruanko">公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
@@ -306,6 +310,6 @@
 						</p>
 						<div class="clearfix"></div></div> 
     </div> 
-  --%>
+  
 </body>
 </html>
