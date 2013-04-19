@@ -251,6 +251,7 @@
     <Content Include="img\ui-icons_888888_256x240.png" />
     <Content Include="img\ui-icons_cd0a0a_256x240.png" />
     <Content Include="img\uploadify-cancel.png" />
+    <Content Include="js\print.js" />
     <Content Include="misc\elfinder-connector\MySQLStorage.sql" />
     <Content Include="misc\uploadify.swf" />
     <Content Include="js\bootstrap-alert.js" />

@@ -113,5 +113,10 @@ namespace 后台
             tboxTotalCost.Text = root.ChildNodes[13].Attributes[0].Value;
             tboxAddtionalSections.Text = root.ChildNodes[14].Attributes[0].Value;
         }
+
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+            Page.ClientScript.RegisterClientScriptInclude("myPrint", "/js/print.js");
+        }
     }
 }

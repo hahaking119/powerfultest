@@ -42,20 +42,16 @@ p.MsoBodyTextIndent
 </head>
 <body>
     <form id="form1" runat="server">
-    <asp:TextBox ID="tboxNo" runat="server">Contract No.</asp:TextBox>
-    <asp:Button ID="btnRead" runat="server" onclick="btnRead_Click" Text="Read" />
-    <br />
+    <asp:TextBox ID="tboxNo" class="Noprn" runat="server">Contract No.</asp:TextBox>
+    <asp:Button ID="btnRead" class="Noprn" runat="server" onclick="btnRead_Click" Text="Read" />
     <br />
     <p class="MsoNormal" style="layout-grid-mode:char;mso-layout-grid-align:none;
 word-break:break-all">
         <span style="font-family:楷体_GB2312">合同编号：<span lang="EN-US" 
             style="color:red"><span style="mso-spacerun:yes">
         <asp:Label ID="lbContractNo" runat="server" Text="ContractNo"></asp:Label>
-&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><o:p></o:p></span></span>
-    </p>
-    <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
-char;mso-layout-grid-align:none;word-break:break-all">
-        <span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+&nbsp;&nbsp;&nbsp; </span></span></span><span lang="EN-US">
+        <o:p>&nbsp;</o:p></span></p>
     <p align="center" class="MsoNormal" style="text-align:center;layout-grid-mode:char;
 mso-layout-grid-align:none">
         <b style="mso-bidi-font-weight:normal">
@@ -68,7 +64,7 @@ char;mso-layout-grid-align:none">
     <p class="MsoNormal" style="line-height:130%;layout-grid-mode:char;mso-layout-grid-align:
 none">
         <span style="font-size:10.5pt;mso-bidi-font-size:10.0pt;line-height:130%;
-font-family:宋体">甲方（旅游者或旅游团体负责人）：<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
+font-family:宋体">甲方（旅游者）：<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
             ID="tboxVisitor" runat="server"></asp:TextBox>
         </span></span></span>
     </p>
@@ -100,7 +96,7 @@ mso-layout-grid-align:none">
     <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
 char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
-10.0pt;line-height:130%;font-family:宋体">旅游路线名称<span lang="EN-US"><span 
+10.0pt;line-height:130%;font-family:宋体">路线名称<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxTourName" runat="server"></asp:TextBox>
         </span></span></span>
     </p>
@@ -109,13 +105,13 @@ char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">行程共计<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxDays" runat="server"></asp:TextBox>
-        </span></span></span>
-    </p>
+        天</span></span></span></p>
     <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
 char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">出发日期<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxSetOffDate" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
         </span></span>出发地点<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
             ID="tboxSetOffPlace" runat="server"></asp:TextBox>
         </span></span></span>
@@ -123,7 +119,7 @@ char;mso-layout-grid-align:none">
     <p align="left" class="MsoNormal" style="text-align:left;text-indent:1.0cm;
 line-height:130%;layout-grid-mode:char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:10.0pt;line-height:130%;font-family:
-宋体">目的地<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
+宋体">目的地点<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
             ID="tboxDestination" runat="server"></asp:TextBox>
         </span></span></span>
     </p>
@@ -132,6 +128,7 @@ char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">结束日期<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxEndDate" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
         </span></span>返回地点<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
             ID="tboxEndPlace" runat="server"></asp:TextBox>
         </span></span></span>
@@ -157,8 +154,9 @@ char;mso-layout-grid-align:none">
 char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">乙方应提示甲方购买旅游意外险。经乙方推荐，甲方<span lang="EN-US"><span 
-            style="mso-spacerun:yes"><asp:TextBox ID="tboxAgree" runat="server"></asp:TextBox>
-        </span></span>（应填同意或不同意，打勾无效）委托乙方办理个人投保的旅游意外保险。</span></p>
+            style="mso-spacerun:yes"><asp:TextBox ID="tboxAgree" runat="server" 
+            Width="82px"></asp:TextBox>
+        </span></span>（应填同意或不同意）委托乙方办理个人投保的旅游意外保险。</span></p>
     <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
 char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
@@ -171,10 +169,10 @@ char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">保险金额：<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxInsuranceStd" runat="server"></asp:TextBox>
+        人民币&nbsp;&nbsp;&nbsp;
         </span></span>保险费<span lang="EN-US"><span style="mso-spacerun:yes"><asp:TextBox 
             ID="tboxInsuranceFee" runat="server"></asp:TextBox>
-        </span></span></span>
-    </p>
+        人民币</span></span></span></p>
     <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
 char;mso-layout-grid-align:none">
         <span lang="EN-US" style="font-size:10.5pt;
@@ -195,8 +193,7 @@ char;mso-layout-grid-align:none">
         <span style="font-size:10.5pt;mso-bidi-font-size:
 10.0pt;line-height:130%;font-family:宋体">甲方应交纳旅游费用总额<span lang="EN-US"><span 
             style="mso-spacerun:yes"><asp:TextBox ID="tboxTotalCost" runat="server"></asp:TextBox>
-        </span></span></span>
-    </p>
+        人民币</span></span></span></p>
     <p class="MsoNormal" style="text-indent:1.0cm;line-height:130%;layout-grid-mode:
 char;mso-layout-grid-align:none">
         <span lang="EN-US" style="font-size:10.5pt;
@@ -361,12 +358,12 @@ char;mso-layout-grid-align:none">
                     <p align="center" class="MsoNormal" style="margin-top:3.0pt;text-align:center;
   line-height:130%;layout-grid-mode:char;mso-layout-grid-align:none">
                         <span style="font-size:10.5pt;mso-bidi-font-size:10.0pt;line-height:130%;
-  font-family:宋体">补 充 条 款<span lang="EN-US"><o:p></o:p></span></span></p>
+  font-family:宋体">补 充 条 款<span lang="EN-US"><o:p>（如无请填“无”）</o:p></span></span></p>
                     <p class="MsoNormal" style="line-height:130%;layout-grid-mode:char;mso-layout-grid-align:
   none">
                         <span lang="EN-US" style="font-size:10.5pt;mso-bidi-font-size:10.0pt;
   line-height:130%;font-family:宋体"><o:p>&nbsp;<asp:TextBox ID="tboxAddtionalSections" runat="server" 
-                            Height="289px" Width="529px" TextMode="MultiLine"></asp:TextBox>
+                            Height="232px" Width="529px" TextMode="MultiLine"></asp:TextBox>
                         </o:p>
                         </span>
                     </p>
@@ -410,9 +407,11 @@ font-family:宋体">乙方签字（盖章）：<span lang="EN-US"><span style="m
     </p>
     <p class="MsoNormal" 
         style="line-height: 130%; layout-grid-mode: char; mso-layout-grid-align: none">
-    <asp:Button ID="btnCommit" runat="server" onclick="btnCommit_Click" 
+    <asp:Button ID="btnCommit" class="Noprn" runat="server" onclick="btnCommit_Click" 
         Text="Submit" />
-        <asp:Button ID="btnPrint" runat="server" Text="Print this Page" />
+        <style> @media Print { .Noprn { DISPLAY: none }}</style>
+        <input id="btnPrint" class="Noprn" type="button" value="Print" onclick="window.print();"/>
+        <%--<asp:Button ID="Button1" runat="server" Text="AspPrint" onclick="this.style.display='none';window.print();"/>--%>
     </p>
     </form>
 </body>

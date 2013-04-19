@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ContractInfo>
+  <Consumer Name="刘维维" />
+  <Agency Name="暴风旅行社" />
+  <TourName Name="东九一日游" />
+  <Days Days="3" />
+  <SetOffDate Date="2013.4.20" />
+  <SetOffPlace Place="东十二" />
+  <Destination Place="东九" />
+  <EndDate Date="2013.4.20" />
+  <EndPlace Place="东十二" />
+  <ifAgree Decision="同意" />
+  <InsuranceName Name="经典套装" />
+  <InsuranceStandard Limit="30000" />
+  <InsuranceFee Money="30" />
+  <TotalCost Money="300000" />
+  <AdditionalSections Text="无" />
+</ContractInfo>
