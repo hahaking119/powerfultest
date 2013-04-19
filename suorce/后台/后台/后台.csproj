@@ -57,7 +57,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="ContractMgr.aspx" />
+    <Content Include="ContractSubmit.aspx" />
     <Content Include="doc\assets\images\html_structure.png" />
     <Content Include="doc\assets\images\image_1.png" />
     <Content Include="doc\css\documenter_style.css" />
@@ -377,12 +377,12 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ContractMgr.aspx.cs">
-      <DependentUpon>ContractMgr.aspx</DependentUpon>
+    <Compile Include="ContractSubmit.aspx.cs">
+      <DependentUpon>ContractSubmit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ContractMgr.aspx.designer.cs">
-      <DependentUpon>ContractMgr.aspx</DependentUpon>
+    <Compile Include="ContractSubmit.aspx.designer.cs">
+      <DependentUpon>ContractSubmit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

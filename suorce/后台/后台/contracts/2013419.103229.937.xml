@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ContractInfo>
+  <Consumer Name="Vivi" />
+  <Agency Name="Walker's Agency" />
+  <TourName Name="Tour to China" />
+  <Days Days="3" />
+  <SetOffDate Date="2013.4.20" />
+  <SetOffPlace Place="HK" />
+  <Destination Place="Beijing" />
+  <EndDate Date="2013.5.7" />
+  <EndPlace Place="HK" />
+  <ifAgree Decision="Agree" />
+  <InsuranceName Name="BestOffMind" />
+  <InsuranceStandard Limit="100000" />
+  <InsuranceFee Money="10" />
+  <TotalCost Money="11110000" />
+  <AdditionalSections Text="None." />
+</ContractInfo>

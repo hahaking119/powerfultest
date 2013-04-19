@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ContractInfo>
+  <Consumer Name="1" />
+  <Agency Name="2" />
+  <TourName Name="3" />
+  <Days Days="4" />
+  <SetOffDate Date="5" />
+  <SetOffPlace Place="6" />
+  <Destination Place="7" />
+  <EndDate Date="8" />
+  <EndPlace Place="9" />
+  <ifAgree Decision="10" />
+  <InsuranceName Name="11" />
+  <InsuranceStandard Limit="12" />
+  <InsuranceFee Money="13" />
+  <TotalCost Money="14" />
+  <AdditionalSections Text="15" />
+</ContractInfo>
