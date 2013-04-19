@@ -340,6 +340,7 @@
     <Content Include="route.aspx" />
     <Content Include="contract.aspx" />
     <Content Include="shuaxin.aspx" />
+    <Content Include="admin-refresh.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -450,6 +451,13 @@
     </Compile>
     <Compile Include="shuaxin.aspx.designer.cs">
       <DependentUpon>shuaxin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin-refresh.aspx.cs">
+      <DependentUpon>admin-refresh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin-refresh.aspx.designer.cs">
+      <DependentUpon>admin-refresh.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

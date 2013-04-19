@@ -28,6 +28,12 @@
 	  .sidebar-nav {
 		padding: 9px 0;
 	  }
+	  
+	   <style type="text/css">
+        #msg{ font-size:16px; margin-top:20px;}
+    </style>
+
+	  
 	</style>
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/charisma-app.css" rel="stylesheet">
@@ -167,10 +173,10 @@
 			</div>
 		
 
-			<div class="row-fluid sortable">		
+			<div  id="look" class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title="">
-						<h2><i class="icon-user"></i>管理员列</h2>
+						<h2><i class="icon-user"></i>管理员列表</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -375,88 +381,126 @@
 	<script src="js/charisma.js" type="text/javascript"></script>
 		        
                 
-                <script type = "text/javascript">
-		            $(function () {
+ <script type="text/javascript" language="javascript">
+     $(function () {
+         $("#dialog:ui-dialog").dialog("destroy");
+         $(".btn-info").click(function () {
+             var username = $(this).attr("id");
+             $("#msg").show();
+             $("#dialog-confirm").dialog({
+                 resizable: false,
+                 height: 140,
+                 modal: true,
+                 buttons: {
+                     "冻结": function () {
+                         $.ajax({
+                             type: "Post",
+                             url: "user.aspx/Freeze",
+                             //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                             data: "{ 'str': '" + username + "' }",
+                             contentType: "application/json; charset=utf-8",
+                             dataType: "json",
+                             success: function (data) {
+                                 //返回的数据用data.d获取内容      
+                                 $("#look").load("admin-refresh.aspx");
 
-		                $(".btn-info").click(function () {
-		              
-		                    var username = $(this).attr("id");
-		                    $.ajax({
-		                        type: "Post",
-		                        url: "admin.aspx/Freeze",
-		                        //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-		                        data: "{ 'str': '" + username + "' }",
-		                        contentType: "application/json; charset=utf-8",
-		                        dataType: "json",
-		                        success: function (data) {
-		                            //返回的数据用data.d获取内容      
-		                            alert(data.d);
-		                        },
-		                        error: function (err) {
-		                            alert(err);
-		                        }
-		                    });
+                             },
+                             error: function (err) {
+                                 alert(err);
+                             }
+                         });
+                         $(this).dialog("close");
+                     },
+                     "取消": function () {
+                         $(this).dialog("close");
+                     }
+                 }
+             });
+         });
+     });
+    </script>
 
-		                    //禁用按钮的提交      
-		                    return false;
-		                });
-		            });
-                                    </script>
 
     <script type = "text/javascript">
-      $(function () {
+        $(function () {
 
-          $(".btn-success").click(function () {
+            $(".btn-success").click(function () {
 
-              var username = $(this).attr("id");
-              $.ajax({
-                  type: "Post",
-                  url: "admin.aspx/UnFreeze",
-                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                  data: "{ 'str': '" + username + "' }",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (data) {
-                      //返回的数据用data.d获取内容      
-                      alert(data.d);
-                  },
-                  error: function (err) {
-                      alert(err);
-                  }
-              });
+                var username = $(this).attr("id");
+                $.ajax({
+                    type: "Post",
+                    url: "admin.aspx/UnFreeze",
+                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                    data: "{ 'str': '" + username + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //返回的数据用data.d获取内容      
+                        alert(data.d);
+                        $("#look").load("admin-refresh.aspx");
 
-              //禁用按钮的提交      
-              return false;
-          });
-      });
-                                    </script>  
-  <script type = "text/javascript">
-      $(function () {
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
 
-          $(".btn-inverse").click(function () {
+                //禁用按钮的提交      
+                return false;
+            });
+        });
+</script>  
 
-              var username = $(this).attr("id");
-              $.ajax({
-                  type: "Post",
-                  url: "admin.aspx/Delete",
-                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                  data: "{ 'str': '" + username + "' }",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (data) {
-                      //返回的数据用data.d获取内容      
-                      alert(data.d);
-                  },
-                  error: function (err) {
-                      alert(err);
-                  }
-              });
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-inverse").click(function () {
+            var username = $(this).attr("id");
+            $("#msg").show();
+            $("#dialog-delete").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "删除": function () {
+                        $.ajax({
+                            type: "Post",
+                            url: "user.aspx/Delete",
+                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                            data: "{ 'str': '" + username + "' }",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                //返回的数据用data.d获取内容      
+                                $("#look").load("admin-refresh.aspx");
 
-              //禁用按钮的提交      
-              return false;
-          });
-      });
-                                    </script>
+                            },
+                            error: function (err) {
+                                alert(err);
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
+    </script>
+                               
+
+        <div id="dialog-confirm" title="冻结提示?">
+        <p id="msg" style="display: none;">
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            确认要冻结该用户吗？</p>
+    </div>
+      <div id="dialog-delete" title="删除提示?">
+        <p id="P1" style="display: none;">
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            确认要删除该用户吗？</p>
+    </div>
 </body>
 </html>
 
