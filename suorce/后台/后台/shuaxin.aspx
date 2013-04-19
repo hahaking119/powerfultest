@@ -4,73 +4,7 @@
 
 <html lang="en">
 <head>
-	<!--
-		Charisma v1.0.0
-
-		Copyright 2012 Muhammad Usman
-		Licensed under the Apache License v2.0
-		http://www.apache.org/licenses/LICENSE-2.0
-
-		http://usman.it
-		http://twitter.com/halalit_usman
-	-->
-<%--	<meta charset="utf-8">
-	<title>旅游同业B2B交易平台</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-	<meta name="author" content="Muhammad Usman">--%>
-
-
-<%--    <script src="js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
-    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>--%>
-<%--	 <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>--%>
-<%--
-    <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>  
-    <script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
-    <!-- The styles -->--%>
-<%--	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
-	<style type="text/css">
-	  body {
-		padding-bottom: 40px;
-	  }
-	  .sidebar-nav {
-		padding: 9px 0;
-	  }
-	  .window{ 
-     width:600px; 
-     background-color:white; 
-     position:absolute; 
-     padding:3px; 
-     margin:5px; 
-     display:none; 
-     } 
-     .content{ 
-     height:400px; 
-     background-color:#FFF; 
-     font-size:14px; 
-     overflow:auto; 
-     } 
-     .title{ 
-         padding:2px; 
-         color:#0CF; 
-         font-size:14px; 
-         } 
-     .title img{ 
-         float:right; 
-         } 
-	</style>
-
-
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- The fav icon -->
-	<link rel="shortcut icon" href="img/favicon.ico">
-		
-</head>--%>
+</head>
 
 <body>
 		<!-- topbar starts -->
@@ -226,7 +160,8 @@
                    dataType: "json",
                    success: function (data) {
                        //返回的数据用data.d获取内容      
-                       alert(data.d);
+                     
+                       $("#look").load("shuaxin.aspx");
                    },
                    error: function (err) {
                        alert(err);
@@ -301,6 +236,13 @@
          });
      });
    </script>
+
+	
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/charisma.js"></script>
+
+
+
  <%--<script type="text/javascript">
      $ ( function () {
          $(".btn-primary").click(function () {

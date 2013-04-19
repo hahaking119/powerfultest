@@ -445,7 +445,8 @@
                     dataType: "json",
                     success: function (data) {
                         //返回的数据用data.d获取内容      
-                        alert(data.d);
+                        
+                        $("#look").load("shuaxin.aspx");
                     },
                     error: function (err) {
                         alert(err);
