@@ -96,7 +96,6 @@
     <Content Include="fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="HTMLPage1.htm" />
-    <Content Include="HTMLPage2.htm" />
     <Content Include="img\ajax-loaders\ajax-loader-1.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-2.gif" />
     <Content Include="img\ajax-loaders\ajax-loader-3.gif" />
