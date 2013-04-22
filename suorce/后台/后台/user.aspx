@@ -214,9 +214,17 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
+                     <div class ="box span12"id="choose" style="width:98% ;height:40px;background-color:#FFDAC8; margin-left:10px;position:relative">
+                    <div id="left" style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="choose" value=" "  onclick="if(this.checked==true) { checkAll('choose'); } else { clearAll('choose'); }" />全选
+                    </div>
+                    <div id="right" style="float:right;border:1;width:10%;"> 
+                    <input type="submit" id = "Button1" class=" btn btn-info" style="width:100px ; height:40px; "value="冻结"/>
+                                   </div>
+                    </div>
 					<div class="box-content"><table  id="boxman" class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                  <th>选择</th>
 								  <th>用户账户名</th>
 								  <th>注册日期</th>
 								  <th>类型</th>
@@ -232,6 +240,7 @@
                                  <%-- <%int i = 1;
                                     { %>--%>
                                 <tr>
+                                <td ><span class= "checked"><input type="checkbox" name="choose" value="<%=listUser[i].UserName%>"/></span></td>
 								<td><%=listUser[i].UserName%></td>
 								<td class="center" ><%=listUser[i].Date%></td>
 								<td class="center"><%=listUser[i].Rank%></td>
@@ -285,19 +294,26 @@
                                     </a>--%>
 								</td>
 							</tr>
+                      
                            <%  } %>
-
+                          
 						  </tbody>
-					  </table>            
+                         
+					  </table>                
 					</div>
+                   
 				</div><!--/span-->
 			
 			</div><!--/row-->
-    
+            
+
+              
 					<!-- content ends -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
-				
+			
+            
+        
 		<hr>
 
 		<div class="modal hide fade" id="myModal">
@@ -397,7 +413,252 @@
 	<script src="js/charisma.js"></script>
 
 
-<%--<script type = "text/javascript">
+          <%-- **************************************审核响应script--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-warning").click(function () {
+            var username = $(this).attr("id");
+            var obj = $(this);
+            $("#msg").show();
+            $("#dialog-pass").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "通过": function () {
+                        $.ajax({
+                            type: "Post",
+                            url: "user.aspx/UnFreeze",
+                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                            data: "{ 'str': '" + username + "' }",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                //返回的数据用data.d获取内容      
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                            },
+                            error: function (err) {
+                                alert(err);
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "不通过": function () {
+                        $.ajax({
+                            type: "Post",
+                            url: "user.aspx/UNPass",
+                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                            data: "{ 'str': '" + username + "' }",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                //返回的数据用data.d获取内容      
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-info\">审核未通过</span>");
+
+                            },
+                            error: function (err) {
+                                alert(err);
+                            }
+                        });
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
+    </script>
+
+
+
+
+            <%--************************************************************解冻响应script--%>
+   <script type = "text/javascript">
+       $(function () {
+
+           $(".btn-success").click(function () {
+
+               var username = $(this).attr("id");
+               var obj = $(this);
+               $.ajax({
+                   type: "Post",
+                   url: "user.aspx/UnFreeze",
+                   //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                   data: "{ 'str': '" + username + "' }",
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (data) {
+                       //返回的数据用data.d获取内容      
+                       $(obj.parents("tr").children("td")[4]).html( "<span class=\"label label-success\">正常</span>");
+                       //$("#look").load("shuaxin.aspx");
+                   },
+                   error: function (err) {
+                       alert(err);
+                   }
+               });
+
+               //禁用按钮的提交      
+               return false;
+           });
+       });
+    </script> 
+
+ 
+ 
+   <%-- *********************************************************冻结响应script--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-info").click(function () {
+            var username = $(this).attr("id");
+            var obj = $(this);
+            $("#msg").show();
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "冻结": function () {                       
+                        $.ajax({
+                            type: "Post",
+                            url: "user.aspx/Freeze",
+                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                            data: "{ 'str': '" + username + "' }",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                //返回的数据用data.d获取内容      
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
+                            },
+                            error: function (err) {
+                                alert(err);
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
+    </script>
+
+   <%--******************************查看响应script*****************************************--%>
+ <script type = "text/javascript">
+     $(function () {
+
+         $(".btn-primary").click(function () {
+
+             var username = $(this).attr("id");
+             $.ajax({
+                 type: "Post",
+                 url: "user.aspx/Check",
+                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                 data: "{ 'str': '" + username + "' }",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     //返回的数据用data.d获取内容 
+                     var results = data.d.split("#");
+                     var content = ["<h1 class=\"center\">公司名称：", results[0], "<small>用户名：" + username + "</small></h1>",
+                        "<br>",
+						"<h2>公司邮箱：", results[4], "</h2>",
+                        "<h2>公司电话：", results[2], "</h2>",
+                        "<h2>公司地址：", results[1], "</h2>",
+                        "<h2>负责人: ", results[3], "</h2>",
+                        "<h2>负责人联系电话：", results[5], "</h2>",
+                        "<h2>公司简介：<small>", results[6], "</small></h2>"
+						].join("");
+                     $("#pop-content").html(content);
+                     //                     $("#ruanku").load(location.href + ' #ruanku>*');
+
+                     //                     $("#ruanko").text(data.d);
+                     //$("#look").load("shuaxin.aspx");
+                     //setTimeout("popCenterWindow()", 500);
+                     //                     popCenterWindow();
+                     popCenterWindow();
+                 },
+                 error: function (err) {
+                     alert(err);
+                 }
+             });
+
+             //禁用按钮的提交      
+             return false;
+         });
+     });
+   </script>
+
+
+   <script type="text/javascript">
+       function checkAll(name) 
+       {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) 
+           {
+               if ((el[i].type == "checkbox") && (el[i].name == name))
+                {
+                    el[i].checked = true;
+                    var username = el[i].value;
+
+
+                    
+                   
+               }
+            }
+            $("#quanxuan").addClass("checked");
+       }
+       function clearAll(name) 
+       {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) 
+           {
+               if ((el[i].type == "checkbox") && (el[i].name == name)) 
+               {
+                   el[i].checked = false;
+               }
+           }
+       } 
+   
+   </script>
+
+  <%--<script type = "text/javascript">
+      $(function () {
+
+          $(".btn-inverse").click(function () {
+
+              var username = $(this).attr("id");
+              $.ajax({
+                  type: "Post",
+                  url: "user.aspx/Delete",
+                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                  data: "{ 'str': '" + username + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                      alert(data.d);
+
+
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+
+              //禁用按钮的提交      
+              return false;
+          });
+      });
+   </script>--%>
+   <%--<script type = "text/javascript">
         $(function () {
 
             $(".btn-info").click(function () {
@@ -446,220 +707,6 @@
 
 
 
-
-
-          <%-- **************************************审核响应script--%>
-<script type="text/javascript" language="javascript">
-    $(function () {
-        $("#dialog:ui-dialog").dialog("destroy");
-        $(".btn-warning").click(function () {
-            var username = $(this).attr("id");
-            var obj = $(this);
-            $("#msg").show();
-            $("#dialog-pass").dialog({
-                resizable: false,
-                height: 140,
-                modal: true,
-                buttons: {
-                    "通过": function () {
-                        $.ajax({
-                            type: "Post",
-                            url: "user.aspx/UnFreeze",
-                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                            data: "{ 'str': '" + username + "' }",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (data) {
-                                //返回的数据用data.d获取内容      
-                                //$("#look").load("shuaxin.aspx");
-                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-success\">正常</span>");
-                            },
-                            error: function (err) {
-                                alert(err);
-                            }
-                        });
-                        $(this).dialog("close");
-                    },
-                    "不通过": function () {
-                        $.ajax({
-                            type: "Post",
-                            url: "user.aspx/UNPass",
-                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                            data: "{ 'str': '" + username + "' }",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (data) {
-                                //返回的数据用data.d获取内容      
-                                //$("#look").load("shuaxin.aspx");
-                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-info\">审核未通过</span>");
-
-                            },
-                            error: function (err) {
-                                alert(err);
-                            }
-                        });
-                        $(this).dialog("close");
-                    }
-                }
-            });
-        });
-    });
-    </script>
-
-
-
-
-            <%--************************************************************解冻响应script--%>
-   <script type = "text/javascript">
-       $(function () {
-
-           $(".btn-success").click(function () {
-
-               var username = $(this).attr("id");
-               var obj = $(this);
-               $.ajax({
-                   type: "Post",
-                   url: "user.aspx/UnFreeze",
-                   //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                   data: "{ 'str': '" + username + "' }",
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function (data) {
-                       //返回的数据用data.d获取内容      
-                       $(obj.parents("tr").children("td")[3]).html( "<span class=\"label label-success\">正常</span>");
-                       //$("#look").load("shuaxin.aspx");
-                   },
-                   error: function (err) {
-                       alert(err);
-                   }
-               });
-
-               //禁用按钮的提交      
-               return false;
-           });
-       });
-    </script> 
-
- 
- 
-   <%-- *********************************************************冻结响应script--%>
-<script type="text/javascript" language="javascript">
-    $(function () {
-        $("#dialog:ui-dialog").dialog("destroy");
-        $(".btn-info").click(function () {
-            var username = $(this).attr("id");
-            var obj = $(this);
-            $("#msg").show();
-            $("#dialog-confirm").dialog({
-                resizable: false,
-                height: 140,
-                modal: true,
-                buttons: {
-                    "冻结": function () {                       
-                        $.ajax({
-                            type: "Post",
-                            url: "user.aspx/Freeze",
-                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                            data: "{ 'str': '" + username + "' }",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (data) {
-                                //返回的数据用data.d获取内容      
-                                //$("#look").load("shuaxin.aspx");
-                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-warning\">冻结</span>");
-                            },
-                            error: function (err) {
-                                alert(err);
-                            }
-                        });
-                        $(this).dialog("close");
-                    },
-                    "取消": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-        });
-    });
-    </script>
-
-     
-  <%--<script type = "text/javascript">
-      $(function () {
-
-          $(".btn-inverse").click(function () {
-
-              var username = $(this).attr("id");
-              $.ajax({
-                  type: "Post",
-                  url: "user.aspx/Delete",
-                  //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                  data: "{ 'str': '" + username + "' }",
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (data) {
-                      //返回的数据用data.d获取内容      
-                      alert(data.d);
-
-
-                  },
-                  error: function (err) {
-                      alert(err);
-                  }
-              });
-
-              //禁用按钮的提交      
-              return false;
-          });
-      });
-   </script>--%>
-
-
- <%--******************************查看响应script*****************************************--%>
- <script type = "text/javascript">
-     $(function () {
-
-         $(".btn-primary").click(function () {
-
-             var username = $(this).attr("id");
-             $.ajax({
-                 type: "Post",
-                 url: "user.aspx/Check",
-                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                 data: "{ 'str': '" + username + "' }",
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 success: function (data) {
-                     //返回的数据用data.d获取内容 
-                     var results = data.d.split("#");
-                     var content = ["<h1 class=\"center\">公司名称：", results[0], "<small>用户名："+username+"</small></h1>",
-                        "<br>",
-						"<h2>公司邮箱：", results[4], "</h2>",
-                        "<h2>公司电话：", results[2], "</h2>",
-                        "<h2>公司地址：", results[1], "</h2>",
-                        "<h2>负责人: ", results[3], "</h2>",
-                        "<h2>负责人联系电话：", results[5], "</h2>",
-                        "<h2>公司简介：<small>", results[6], "</small></h2>"
-						].join("");
-                     $("#pop-content").html(content);
-                     //                     $("#ruanku").load(location.href + ' #ruanku>*');
-
-                     //                     $("#ruanko").text(data.d);
-                     //$("#look").load("shuaxin.aspx");
-                     //setTimeout("popCenterWindow()", 500);
-                     //                     popCenterWindow();
-                     popCenterWindow();
-                 },
-                 error: function (err) {
-                     alert(err);
-                 }
-             });
-
-             //禁用按钮的提交      
-             return false;
-         });
-     });
-   </script>
 
  <%--<script type="text/javascript">
      $ ( function () {
@@ -716,6 +763,7 @@
                         <h2>公司简介：<small><% = Description %>
 						<div class="clearfix"></div></div> 
     </div> 
+
    <div id="dialog-confirm" title="冻结提示?">
         <p id="msg" style="display: none;">
             <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
