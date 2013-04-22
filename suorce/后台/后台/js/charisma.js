@@ -349,18 +349,18 @@ function docReady(){
 		var sin = [], cos = [];
 
 		for (var i = 0; i < 14; i += 0.5) {
-			sin.push([i, Math.sin(i)/i]);
-			cos.push([i, Math.cos(i)]);
+			sin.push([i, i++]);
+			cos.push([i, 3]);
 		}
 
 		var plot = $.plot($("#sincos"),
-			   [ { data: sin, label: "sin(x)/x"}, { data: cos, label: "cos(x)" } ], {
+			   [ { data: sin, label: "用户人数"}, { data: cos, label: "管理员人数" } ], {
 				   series: {
 					   lines: { show: true  },
 					   points: { show: true }
 				   },
 				   grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#eee"] } },
-				   yaxis: { min: -1.2, max: 1.2 },
+				   yaxis: { min: 0, max: 20 },
 				   colors: ["#539F2E", "#3C67A5"]
 				 });
 

@@ -381,75 +381,79 @@
 	<script src="js/charisma.js" type="text/javascript"></script>
 		        
                 
- <script type="text/javascript" language="javascript">
-     $(function () {
-         $("#dialog:ui-dialog").dialog("destroy");
-         $(".btn-info").click(function () {
-             var username = $(this).attr("id");
-             $("#msg").show();
-             $("#dialog-confirm").dialog({
-                 resizable: false,
-                 height: 140,
-                 modal: true,
-                 buttons: {
-                     "冻结": function () {
-                         $.ajax({
-                             type: "Post",
-                             url: "user.aspx/Freeze",
-                             //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                             data: "{ 'str': '" + username + "' }",
-                             contentType: "application/json; charset=utf-8",
-                             dataType: "json",
-                             success: function (data) {
-                                 //返回的数据用data.d获取内容      
-                                 $("#look").load("admin-refresh.aspx");
-
-                             },
-                             error: function (err) {
-                                 alert(err);
-                             }
-                         });
-                         $(this).dialog("close");
-                     },
-                     "取消": function () {
-                         $(this).dialog("close");
-                     }
-                 }
-             });
-         });
-     });
+  <%-- *********************************************************冻结响应script--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-info").click(function () {
+            var username = $(this).attr("id");
+            var obj = $(this);
+            $("#msg").show();
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "冻结": function () {
+                        $.ajax({
+                            type: "Post",
+                            url: "user.aspx/Freeze",
+                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                            data: "{ 'str': '" + username + "' }",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (data) {
+                                //返回的数据用data.d获取内容      
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-warning\">冻结</span>");
+                            },
+                            error: function (err) {
+                                alert(err);
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    });
     </script>
 
 
-    <script type = "text/javascript">
-        $(function () {
+<%--********************************解冻响应*********************************--%>
+ <script type = "text/javascript">
+     $(function () {
 
-            $(".btn-success").click(function () {
+         $(".btn-success").click(function () {
 
-                var username = $(this).attr("id");
-                $.ajax({
-                    type: "Post",
-                    url: "admin.aspx/UnFreeze",
-                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                    data: "{ 'str': '" + username + "' }",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        //返回的数据用data.d获取内容      
-                        alert(data.d);
-                        $("#look").load("admin-refresh.aspx");
+             var username = $(this).attr("id");
+             var obj = $(this);
+             $.ajax({
+                 type: "Post",
+                 url: "user.aspx/UnFreeze",
+                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                 data: "{ 'str': '" + username + "' }",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (data) {
+                     //返回的数据用data.d获取内容      
+                     $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-success\">正常</span>");
+                     //$("#look").load("shuaxin.aspx");
+                 },
+                 error: function (err) {
+                     alert(err);
+                 }
+             });
 
-                    },
-                    error: function (err) {
-                        alert(err);
-                    }
-                });
+             //禁用按钮的提交      
+             return false;
+         });
+     });
+    </script> 
 
-                //禁用按钮的提交      
-                return false;
-            });
-        });
-</script>  
 
 <script type="text/javascript" language="javascript">
     $(function () {

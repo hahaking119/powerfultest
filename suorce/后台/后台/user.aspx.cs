@@ -139,7 +139,7 @@ namespace 后台
             return "success";
         }
          [WebMethod]
-          public static void Check(string str)
+          public static string Check(string str)
           {
               
               SqlConnection conn = new SqlConnection(StrConn);
@@ -149,18 +149,18 @@ namespace 后台
               cmd.Connection = conn;
               cmd.CommandText = "Select * FROM [UserDetail] WHERE [UserDetail].UserId=(Select UserId FROM [User] where UserName='" + str + "')";
               SqlDataReader reader = cmd.ExecuteReader();
-              
+              string retData = "";
               while (reader.Read())
               {
                   
                   //userdetailsys d = new userdetailsys();
-                  CompanyName = reader["CompanyName"].ToString();
-                  CompanyAddress = reader["CompanyAddress"].ToString();
-                  CompanyTel = reader["CompanyTel"].ToString();
-                  Principal = reader["Principal"].ToString();
-                  Email = reader["Email"].ToString();
-                  Phone = reader["Phone"].ToString();
-                  Description = reader["Description"].ToString();
+                  retData += reader["CompanyName"].ToString() + "#";
+                  retData += reader["CompanyAddress"].ToString() + "#";
+                  retData += reader["CompanyTel"].ToString() + "#";
+                  retData += reader["Principal"].ToString() + "#";
+                  retData += reader["Email"].ToString() + "#";
+                  retData += reader["Phone"].ToString() + "#";
+                  retData += reader["Description"].ToString();
                   //listUserDetail.Add(d);
 
                   /*  TextBox1.Text = reader["UserName"].ToString();*/
@@ -169,7 +169,8 @@ namespace 后台
               /*TextBox1.Text = UserName[1];*/
               reader.Close();
               conn.Close();
-              //return CompanyName;
+
+              return retData;
              
           }
     }

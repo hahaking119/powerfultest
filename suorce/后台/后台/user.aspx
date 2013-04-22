@@ -444,11 +444,17 @@
      
       </script>--%>
 
+
+
+
+
+          <%-- **************************************审核响应script--%>
 <script type="text/javascript" language="javascript">
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
         $(".btn-warning").click(function () {
             var username = $(this).attr("id");
+            var obj = $(this);
             $("#msg").show();
             $("#dialog-pass").dialog({
                 resizable: false,
@@ -465,8 +471,8 @@
                             dataType: "json",
                             success: function (data) {
                                 //返回的数据用data.d获取内容      
-                                $("#look").load("shuaxin.aspx");
-
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-success\">正常</span>");
                             },
                             error: function (err) {
                                 alert(err);
@@ -484,7 +490,8 @@
                             dataType: "json",
                             success: function (data) {
                                 //返回的数据用data.d获取内容      
-                                $("#look").load("shuaxin.aspx");
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-info\">审核未通过</span>");
 
                             },
                             error: function (err) {
@@ -501,39 +508,47 @@
 
 
 
+
+            <%--************************************************************解冻响应script--%>
    <script type = "text/javascript">
-        $(function () {
+       $(function () {
 
-            $(".btn-success").click(function () {
+           $(".btn-success").click(function () {
 
-                var username = $(this).attr("id");
-                $.ajax({
-                    type: "Post",
-                    url: "user.aspx/UnFreeze",
-                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                    data: "{ 'str': '" + username + "' }",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        //返回的数据用data.d获取内容      
-                        
-                        $("#look").load("shuaxin.aspx");
-                    },
-                    error: function (err) {
-                        alert(err);
-                    }
-                });
+               var username = $(this).attr("id");
+               var obj = $(this);
+               $.ajax({
+                   type: "Post",
+                   url: "user.aspx/UnFreeze",
+                   //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                   data: "{ 'str': '" + username + "' }",
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (data) {
+                       //返回的数据用data.d获取内容      
+                       $(obj.parents("tr").children("td")[3]).html( "<span class=\"label label-success\">正常</span>");
+                       //$("#look").load("shuaxin.aspx");
+                   },
+                   error: function (err) {
+                       alert(err);
+                   }
+               });
 
-                //禁用按钮的提交      
-                return false;
-            });
-        });
+               //禁用按钮的提交      
+               return false;
+           });
+       });
     </script> 
+
+ 
+ 
+   <%-- *********************************************************冻结响应script--%>
 <script type="text/javascript" language="javascript">
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
         $(".btn-info").click(function () {
             var username = $(this).attr("id");
+            var obj = $(this);
             $("#msg").show();
             $("#dialog-confirm").dialog({
                 resizable: false,
@@ -550,8 +565,8 @@
                             dataType: "json",
                             success: function (data) {
                                 //返回的数据用data.d获取内容      
-                                $("#look").load("shuaxin.aspx");
-
+                                //$("#look").load("shuaxin.aspx");
+                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-warning\">冻结</span>");
                             },
                             error: function (err) {
                                 alert(err);
@@ -600,7 +615,7 @@
    </script>--%>
 
 
- 
+ <%--******************************查看响应script*****************************************--%>
  <script type = "text/javascript">
      $(function () {
 
@@ -615,15 +630,25 @@
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (data) {
-                     //返回的数据用data.d获取内容      
-                     //                     $("#center").html(" ")
+                     //返回的数据用data.d获取内容 
+                     var results = data.d.split("#");
+                     var content = ["<h1 class=\"center\">公司名称：", results[0], "<small>用户名："+username+"</small></h1>",
+                        "<br>",
+						"<h2>公司邮箱：", results[4], "</h2>",
+                        "<h2>公司电话：", results[2], "</h2>",
+                        "<h2>公司地址：", results[1], "</h2>",
+                        "<h2>负责人: ", results[3], "</h2>",
+                        "<h2>负责人联系电话：", results[5], "</h2>",
+                        "<h2>公司简介：<small>", results[6], "</small></h2>"
+						].join("");
+                     $("#pop-content").html(content);
                      //                     $("#ruanku").load(location.href + ' #ruanku>*');
 
                      //                     $("#ruanko").text(data.d);
-                     $("#look").load("shuaxin.aspx");
-                     setTimeout("popCenterWindow()", 500);
+                     //$("#look").load("shuaxin.aspx");
+                     //setTimeout("popCenterWindow()", 500);
                      //                     popCenterWindow();
-                     //                     popCenterWindow();
+                     popCenterWindow();
                  },
                  error: function (err) {
                      alert(err);
@@ -681,26 +706,14 @@
  <div class="window" id="center"> 
  <div id="title" class="title">
                             <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
- <div class="box-content"><h1 class="center" id="ruanko">公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
+ <div class="box-content" id="pop-content"><h1 class="center" id="ruanko">公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
                         <br>
 						<h2>公司邮箱：<% = Email %></h2>
                         <h2>公司电话：<% = CompanyTel %></h2>
                         <h2>公司地址：<% = CompanyAddress %></h2>
                         <h2>负责人: <% = Principal %></h2>
                         <h2>负责人联系电话：<% =Phone %>></h2>
-                        <h2>公司简介：<small><% = Description %>ll pages in the menu are functional, take a look at all, please share this with your followers.</small></h2>
-
-
-						<p><b>All pages in the menu are functional, take a look at all, please share this with your followers.</b></p>
-						
-				<%--<p class="center">
-                  <button  id = "<%= listUser[i].UserName %>" class="btn-warning" >
-                                    <i class="icon-check icon-white"></i>
-                                    审核</button>
-                                   
-							<%--<a href="user.aspx" class="btn btn-large btn-primary"><i class="icon-chevron-left icon-white"></i> 返回</a> --%>
-							<%--<a href="http://usman.it/free-responsive-admin-template" class="btn btn-large"><i class="icon-download-alt"></i> 审核通过</a>--%>
-			
+                        <h2>公司简介：<small><% = Description %>
 						<div class="clearfix"></div></div> 
     </div> 
    <div id="dialog-confirm" title="冻结提示?">
