@@ -48,6 +48,7 @@
 </head>
 
 <body>
+		<form id="form1" runat="server">
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
@@ -97,10 +98,8 @@
 					<ul class="nav">
 						<li><a href="#">Visit Site</a></li>
 						<li>
-							<form class="navbar-search pull-left">
 								<input placeholder="Search" class="search-query span2" name="query" type="text">
-							</form>
-						</li>
+							</li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -167,13 +166,13 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-					<div class="box-content">
-						<div class="alert alert-info">
+<%--					<div class="box-content">
+						<<div class="alert alert-info">
 							<button type="button" class="close" data-dismiss="alert">×</button>
 							<i class="icon-info-sign"></i> 合同内容
 						</div>
 						<div class="file-manager"></div>
-					</div>
+					</div>--%>
 				</div><!--/span-->
 			
 			</div><!--/row-->
@@ -181,10 +180,11 @@
 		
 					<!-- content ends -->
 			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
+				</div>
+            <asp:DataList ID="DataList1" runat="server">
+            </asp:DataList>
+            <!--/fluid-row-->
 				
-		<hr>
-
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
@@ -280,4 +280,7 @@
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
+	
+        </form>
+
 	
