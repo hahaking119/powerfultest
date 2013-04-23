@@ -182,11 +182,29 @@
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
-					</div>
+                    </div>
+                    <div class ="box span12"id="choose" style="width:98% ;height:40px;background-color:#FFDAC8; margin-left:10px;position:relative">
+                    <div id="left" style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="choose" value=" "  onclick="if(this.checked==true) { checkAll('choose'); } else { clearAll('choose'); }" />全选
+                    </div>                                   
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { normal('choose'); } else { clearNormal('choose'); }" />正常
+                    </div>
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { freeze('choose'); } else { clearFreeze('choose'); }" />已冻结
+                    </div>
+                    <div id="right" style="float:right;border:1;"> <button  id = "fuxuan" style="height:40px; width:100px"class=" btn-danger" >
+                                    <i class="icon-edit icon-white"></i>
+                                    冻结</button>
+                    </div>
+                      <div id="Div2" style="float:right;border:1;"> <button  id = "unfreeze" style="height:40px; width:100px" class="btn-large " >
+                                    <i class="icon-edit icon-blue"></i>
+                                    解冻</button>
+                    </div>
+                    </div>
+					
 					<div class="box-content">
 							<table id="boxman" class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                  <th>选择</th>
 								  <th>管理员账户名</th>
 								  <th>注册日期</th>
 								  <th>类型</th>
@@ -201,6 +219,7 @@
                                  <%-- <%int i = 1;
                                     { %>--%>
                                 <tr>
+                                <td id="quanxuan"><input type="checkbox" name="choose" value="<%=listUser[i].UserName%>"/></td>
 								<td><%=listUser[i].UserName%></td>
 								<td class="center" ><%=listUser[i].Date%></td>
 								<td class="center"><%=listUser[i].Rank%></td>
@@ -216,21 +235,21 @@
 								<td class="center">
                                     <a >
     
-                                    <button  id ="<%= listUser[i].UserName %>" class="btn-success" >
+                                    <button  id ="<%= listUser[i].UserName %>" class=" btn btn-success" >
                                     <i class="icon-pencil icon-white"></i>
                                     解冻</button>
                                     </a>
                                     </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
                                     <a >
-                                    <button  id = "<%= listUser[i].UserName %>"  class="btn-info"   >
+                                    <button  id = "<%= listUser[i].UserName %>"  class="btn btn-info"   >
                                     <i class="icon-edit icon-white "></i>
                                     
                                     冻结</button>
                                         
                                     </a>                             									
                                     <a >
-                                    <button  id ="<%= listUser[i].UserName %>" class="btn-inverse" >
+                                    <button  id ="<%= listUser[i].UserName %>" class="btn btn-inverse" >
                                     <i class="icon-remove icon-white"></i>
                                     删除</button>
                                     </a>
@@ -381,80 +400,92 @@
 	<script src="js/charisma.js" type="text/javascript"></script>
 		        
                 
-  <%-- *********************************************************冻结响应script--%>
+            <%--************************************************************解冻响应script--%>
+   <script type = "text/javascript">
+       $(function () {
+
+           $(".btn-success").click(function () {
+
+               var username = $(this).attr("id");
+               var obj = $(this);
+               var obk = $(obj.parents("tr").children("td")[4]);
+               if (obk.children("span").text() == "冻结") {
+                   $.ajax({
+                       type: "Post",
+                       url: "user.aspx/UnFreeze",
+                       //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                       data: "{ 'str': '" + username + "' }",
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function (data) {
+                           //返回的数据用data.d获取内容      
+                           $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                           //$("#look").load("shuaxin.aspx");
+                       },
+                       error: function (err) {
+                           alert(err);
+                       }
+                   });
+               }
+               else {
+                   alert("该用户不是冻结状态，无法解冻");
+               }
+               //禁用按钮的提交      
+               return false;
+           });
+       });
+    </script> 
+
+ 
+ 
+   <%-- *********************************************************冻结响应script****************--%>
 <script type="text/javascript" language="javascript">
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
         $(".btn-info").click(function () {
             var username = $(this).attr("id");
             var obj = $(this);
-            $("#msg").show();
-            $("#dialog-confirm").dialog({
-                resizable: false,
-                height: 140,
-                modal: true,
-                buttons: {
-                    "冻结": function () {
-                        $.ajax({
-                            type: "Post",
-                            url: "user.aspx/Freeze",
-                            //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                            data: "{ 'str': '" + username + "' }",
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function (data) {
-                                //返回的数据用data.d获取内容      
-                                //$("#look").load("shuaxin.aspx");
-                                $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-warning\">冻结</span>");
-                            },
-                            error: function (err) {
-                                alert(err);
-                            }
-                        });
-                        $(this).dialog("close");
-                    },
-                    "取消": function () {
-                        $(this).dialog("close");
+            var obk = $(obj.parents("tr").children("td")[4]);
+            if ($(obk.children("span")).text() == "正常") {
+                $("#msg").show();
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: 140,
+                    modal: true,
+                    buttons: {
+                        "冻结": function () {
+                            $.ajax({
+                                type: "Post",
+                                url: "user.aspx/Freeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            $(this).dialog("close");
+                        },
+                        "取消": function () {
+                            $(this).dialog("close");
+                        }
                     }
-                }
-            });
+                });
+            }
+            else {
+                alert("该用户状态异常，无法被冻结！");
+            }
         });
     });
     </script>
 
-
-<%--********************************解冻响应*********************************--%>
- <script type = "text/javascript">
-     $(function () {
-
-         $(".btn-success").click(function () {
-
-             var username = $(this).attr("id");
-             var obj = $(this);
-             $.ajax({
-                 type: "Post",
-                 url: "user.aspx/UnFreeze",
-                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                 data: "{ 'str': '" + username + "' }",
-                 contentType: "application/json; charset=utf-8",
-                 dataType: "json",
-                 success: function (data) {
-                     //返回的数据用data.d获取内容      
-                     $(obj.parents("tr").children("td")[3]).html("<span class=\"label label-success\">正常</span>");
-                     //$("#look").load("shuaxin.aspx");
-                 },
-                 error: function (err) {
-                     alert(err);
-                 }
-             });
-
-             //禁用按钮的提交      
-             return false;
-         });
-     });
-    </script> 
-
-
+<%--*********************************************删除响应*******************************--%>
 <script type="text/javascript" language="javascript">
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
@@ -494,7 +525,241 @@
     });
     </script>
                                
+<%--
+*********************************************复选框的操作****************************************--%>
+   <script type="text/javascript">
+       function checkAll(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                   el[i].checked = true;
 
+               }
+           }
+           $("#quanxuan span").addClass("checked");
+       }
+       function clearAll(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                   el[i].checked = false;
+               }
+           }
+           $("#quanxuan span").removeClass("checked");
+       }
+
+//       function examine(name) {
+//           var el = document.getElementsByTagName('input');
+//           var len = el.length;
+//           for (var i = 0; i < len; i++) {
+//               var obj = $(el[i]);
+
+//               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "审核未通过") {
+//                   el[i].checked = true;
+//                   $(el[i]).parent().addClass("checked");
+//               }
+//           }
+
+//       }
+//       function clearExamine(name) {
+//           var el = document.getElementsByTagName('input');
+//           var len = el.length;
+//           for (var i = 0; i < len; i++) {
+//               var obj = $(el[i]);
+//               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "审核未通过") {
+//                   el[i].checked = false;
+//                   $(el[i]).parent().removeClass("checked");
+//               }
+//           }
+
+//       }
+
+       function freeze(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "冻结") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+
+       function clearFreeze(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "冻结") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+
+//       function NoExamine(name) {
+//           var el = document.getElementsByTagName('input');
+//           var len = el.length;
+//           for (var i = 0; i < len; i++) {
+//               var obj = $(el[i]);
+
+//               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "未审核") {
+//                   el[i].checked = true;
+//                   $(el[i]).parent().addClass("checked");
+//               }
+//           }
+
+//       }
+
+//       function clearNoExamine(name) {
+//           var el = document.getElementsByTagName('input');
+//           var len = el.length;
+//           for (var i = 0; i < len; i++) {
+//               var obj = $(el[i]);
+//               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "未审核") {
+//                   el[i].checked = false;
+//                   $(el[i]).parent().removeClass("checked");
+//               }
+//           }
+
+//       }
+       function normal(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "正常") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+
+       function clearNormal(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "正常") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+   </script>
+ 
+ <%--*********************************全选后冻结操作*****************************--%>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $("#fuxuan").click(function () {
+            //            var username = $(this).attr("id");
+            //            var obj = $(this);
+            $("#msg").show();
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "冻结": function () {
+
+                        //                        var ch = $(".quanxuan").children("div").children("span");
+                        var el = document.getElementsByTagName('input');
+                        var len = el.length;
+                        for (var i = 0; i < len; i++) {
+
+                            var obj = $(el[i]);
+                            if ($(el[i]).parent().hasClass('checked')) {
+                                var username = el[i].value;
+                                var obj = $(el[i]);
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
+                                $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/Freeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            }
+                        }
+                        $(this).dialog("close");
+                    },
+
+
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+
+                }
+            });
+        });
+    });
+   
+   
+    </script>
+
+<%--*********************************全选后解冻操作*****************************--%>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#unfreeze").click(function () {
+            var el = document.getElementsByTagName('input');
+            var len = el.length;
+            for (var i = 0; i < len; i++) {
+
+                var obj = $(el[i]);
+                if ($(el[i]).parent().hasClass('checked')) {
+                    var username = el[i].value;
+                    var obj = $(el[i]);
+                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                    $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/unFreeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                }
+            }
+        });
+    });
+   
+   
+    </script>
+
+ 
         <div id="dialog-confirm" title="冻结提示?">
         <p id="msg" style="display: none;">
             <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
