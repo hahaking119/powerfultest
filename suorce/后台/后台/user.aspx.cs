@@ -58,7 +58,7 @@ namespace 后台
             //MessageBox.Show("数据库连接成功", "好");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "Select * FROM [User]";
+            cmd.CommandText = "Select * FROM [User] where [Rank]=1 or [Rank]=2";
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -67,7 +67,10 @@ namespace 后台
                 usersys u = new usersys();
                 u.UserName = reader["UserName"].ToString();
                 u.Date = reader["Date"].ToString();
-                u.Rank = reader["Rank"].ToString();
+                if (reader["Rank"].ToString() == "1")
+                { u.Rank = "普通会员"; }
+                else
+                { u.Rank = "VIP会员"; }
                 u.UserState = reader["UserState"].ToString();
                 listUser.Add(u);
 

@@ -42,7 +42,7 @@ namespace 后台
             //MessageBox.Show("数据库连接成功", "好");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "Select * FROM [User]";
+            cmd.CommandText = "Select * FROM [User] Where Rank=3";
             SqlDataReader reader = cmd.ExecuteReader();
             
             while (reader.Read())
@@ -51,7 +51,8 @@ namespace 后台
                 usersys u = new usersys();
                 u.UserName = reader["UserName"].ToString();
                 u.Date = reader["Date"].ToString();
-                u.Rank = reader["Rank"].ToString();
+                if (reader["Rank"].ToString() == "3") 
+                u.Rank = "管理员";
                 u.UserState = reader["UserState"].ToString();
                 listUser.Add(u);
                
