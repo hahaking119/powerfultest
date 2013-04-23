@@ -166,7 +166,7 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
-<%--					<div class="box-content">
+                    <%--					<div class="box-content">
 						<<div class="alert alert-info">
 							<button type="button" class="close" data-dismiss="alert">×</button>
 							<i class="icon-info-sign"></i> 合同内容
@@ -183,6 +183,9 @@
 				</div>
             <asp:DataList ID="DataList1" runat="server">
             </asp:DataList>
+					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><a class="ajax-link" href="gallery.html"><span class="hidden-tablet"> 
+            <asp:Label ID="lbTestString" runat="server"></asp:Label>
+            </span></a></label>
             <!--/fluid-row-->
 				
 		<div class="modal hide fade" id="myModal">
