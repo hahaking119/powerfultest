@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TIB2BDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TIB2BDBModelStoreContainer">
+    <EntitySet Name="Bid" EntityType="TIB2BDBModel.Store.Bid" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contract" EntityType="TIB2BDBModel.Store.Contract" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Deal" EntityType="TIB2BDBModel.Store.Deal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Place" EntityType="TIB2BDBModel.Store.Place" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Route" EntityType="TIB2BDBModel.Store.Route" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Scenery" EntityType="TIB2BDBModel.Store.Scenery" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="TIB2BDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Bid_Place" Association="TIB2BDBModel.Store.FK_Bid_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Bid" EntitySet="Bid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bid_User" Association="TIB2BDBModel.Store.FK_Bid_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Bid" EntitySet="Bid" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Deal" Association="TIB2BDBModel.Store.FK_Contract_Deal">
+      <End Role="Deal" EntitySet="Deal" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_User" Association="TIB2BDBModel.Store.FK_Contract_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Place" Association="TIB2BDBModel.Store.FK_Deal_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_User" Association="TIB2BDBModel.Store.FK_Deal_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Place_Route" Association="TIB2BDBModel.Store.FK_Place_Route">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="Place" EntitySet="Place" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Scenery_Scenery" Association="TIB2BDBModel.Store.FK_Scenery_Scenery">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="Scenery" EntitySet="Scenery" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Route1" Association="TIB2BDBModel.Store.FK_User_Route1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Route" EntitySet="Route" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_User" Association="TIB2BDBModel.Store.FK_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User1" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bid">
+    <Key>
+      <PropertyRef Name="BidId" />
+    </Key>
+    <Property Name="BidId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PlaceId" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="BidTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractId" />
+    </Key>
+    <Property Name="ContractId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="DealId" Type="int" />
+    <Property Name="ContractUrl" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="DealId" />
+    </Key>
+    <Property Name="DealId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="PlaceId" Type="int" />
+    <Property Name="Price" Type="decimal" Scale="2" />
+    <Property Name="DealTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="PlaceId" />
+    </Key>
+    <Property Name="PlaceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="Days" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="PlaceName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PlaceDetail" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RouteName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="RouteDetails" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="RouteDays" Type="int" Nullable="false" />
+    <Property Name="RouteType" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Scenery">
+    <Key>
+      <PropertyRef Name="SceneryId" />
+    </Key>
+    <Property Name="SceneryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PlaceId" Type="int" Nullable="false" />
+    <Property Name="SceneryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SceneryDetails" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Requirement" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Rank" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bid_Place">
+    <End Role="Place" Type="TIB2BDBModel.Store.Place" Multiplicity="1" />
+    <End Role="Bid" Type="TIB2BDBModel.Store.Bid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="Bid">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bid_User">
+    <End Role="User" Type="TIB2BDBModel.Store.User" Multiplicity="1" />
+    <End Role="Bid" Type="TIB2BDBModel.Store.Bid" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Bid">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Deal">
+    <End Role="Deal" Type="TIB2BDBModel.Store.Deal" Multiplicity="0..1" />
+    <End Role="Contract" Type="TIB2BDBModel.Store.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deal">
+        <PropertyRef Name="DealId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="DealId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_User">
+    <End Role="User" Type="TIB2BDBModel.Store.User" Multiplicity="0..1" />
+    <End Role="Contract" Type="TIB2BDBModel.Store.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Place">
+    <End Role="Place" Type="TIB2BDBModel.Store.Place" Multiplicity="0..1" />
+    <End Role="Deal" Type="TIB2BDBModel.Store.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_User">
+    <End Role="User" Type="TIB2BDBModel.Store.User" Multiplicity="0..1" />
+    <End Role="Deal" Type="TIB2BDBModel.Store.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Place_Route">
+    <End Role="Route" Type="TIB2BDBModel.Store.Route" Multiplicity="1" />
+    <End Role="Place" Type="TIB2BDBModel.Store.Place" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="Place">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Scenery_Scenery">
+    <End Role="Place" Type="TIB2BDBModel.Store.Place" Multiplicity="1" />
+    <End Role="Scenery" Type="TIB2BDBModel.Store.Scenery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="PlaceId" />
+      </Principal>
+      <Dependent Role="Scenery">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Route1">
+    <End Role="User" Type="TIB2BDBModel.Store.User" Multiplicity="0..1" />
+    <End Role="Route" Type="TIB2BDBModel.Store.Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_User">
+    <End Role="User" Type="TIB2BDBModel.Store.User" Multiplicity="1" />
+    <End Role="User1" Type="TIB2BDBModel.Store.User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

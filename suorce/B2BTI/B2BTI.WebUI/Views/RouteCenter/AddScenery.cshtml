@@ -1,0 +1,16 @@
+﻿@model B2BTI.Domain.Entity.Scenery
+@{
+    ViewBag.Title = "AddScenery";
+}
+
+<h2>AddScenery</h2>
+@using(Html.BeginForm("AddScenery","RouteCenter",FormMethod.Post)){
+    <fieldset>
+        <legend>Scenery Details</legend>
+        <div>
+            @Html.EditorForModel()
+        </div>
+    </fieldset>
+    <input type="submit" value="Add!" />
+}
+

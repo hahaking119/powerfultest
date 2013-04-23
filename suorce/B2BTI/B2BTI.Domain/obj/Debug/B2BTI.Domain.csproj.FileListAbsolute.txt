@@ -1,0 +1,28 @@
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\obj\Debug\ResolveAssemblyReference.cache
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll.config
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.pdb
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.dll
+d:\My Documents\Visual Studio 2010\Projects\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.pdb
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll.config
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.pdb
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\DataAnnotationsExtensions.ClientValidation.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\DataAnnotationsExtensions.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\EntityFramework.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\WebActivator.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\bin\Debug\EntityFramework.xml
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.dll
+C:\Users\LILO\Desktop\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.pdb
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll.config
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\B2BTI.Domain.pdb
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\DataAnnotationsExtensions.ClientValidation.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\DataAnnotationsExtensions.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\WebActivator.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.dll
+C:\Users\Administrator\Desktop\powerfultest\suorce\B2BTI\B2BTI.Domain\obj\Debug\B2BTI.Domain.pdb

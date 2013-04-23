@@ -1,0 +1,14 @@
+﻿@model B2BTI.Domain.Entity.Route
+
+@{
+    ViewBag.Title = "AddRoute";
+}
+
+<h2>AddRoute</h2>
+@using (Html.BeginForm("AddRoute", "RouteCenter", FormMethod.Post))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="ADD!" />
+}
+
+

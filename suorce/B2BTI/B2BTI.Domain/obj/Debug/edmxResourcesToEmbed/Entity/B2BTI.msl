@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TIB2BDBModelStoreContainer" CdmEntityContainer="TIB2BDBEntities1">
+    <EntitySetMapping Name="Bid">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Bid">
+        <MappingFragment StoreEntitySet="Bid">
+          <ScalarProperty Name="BidId" ColumnName="BidId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BidTime" ColumnName="BidTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contract">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Contract">
+        <MappingFragment StoreEntitySet="Contract">
+          <ScalarProperty Name="ContractId" ColumnName="ContractId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DealId" ColumnName="DealId" />
+          <ScalarProperty Name="ContractUrl" ColumnName="ContractUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deal">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Deal">
+        <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="DealId" ColumnName="DealId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DealTime" ColumnName="DealTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="PlaceName" ColumnName="PlaceName" />
+          <ScalarProperty Name="PlaceDetail" ColumnName="PlaceDetail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Route">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="RouteDetails" ColumnName="RouteDetails" />
+          <ScalarProperty Name="RouteDays" ColumnName="RouteDays" />
+          <ScalarProperty Name="RouteType" ColumnName="RouteType" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scenery">
+      <EntityTypeMapping TypeName="TIB2BDBModel.Scenery">
+        <MappingFragment StoreEntitySet="Scenery">
+          <ScalarProperty Name="SceneryId" ColumnName="SceneryId" />
+          <ScalarProperty Name="PlaceId" ColumnName="PlaceId" />
+          <ScalarProperty Name="SceneryName" ColumnName="SceneryName" />
+          <ScalarProperty Name="SceneryDetails" ColumnName="SceneryDetails" />
+          <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="TIB2BDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

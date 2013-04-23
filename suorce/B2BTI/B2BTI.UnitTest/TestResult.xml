@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\LILO\Desktop\B2BTI\B2BTI.UnitTest\B2BTI.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-04-18" time="15:19:04">
+  <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.4984" os-version="Microsoft Windows NT 6.1.7600.0" platform="Win32NT" cwd="c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE" machine-name="LILO-PC" user="LILO" user-domain="LILO-PC" />
+  <culture-info current-culture="zh-CN" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\LILO\Desktop\B2BTI\B2BTI.UnitTest\B2BTI.nunit" executed="True" result="Success" success="True" time="10.592" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\LILO\Desktop\B2BTI\B2BTI.UnitTest\bin\Debug\B2BTI.UnitTest.dll" executed="True" result="Success" success="True" time="10.568" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="B2BTI" executed="True" result="Success" success="True" time="10.568" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="UnitTest" executed="True" result="Success" success="True" time="10.567" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="B2BTI_Domain_Test" executed="True" result="Success" success="True" time="10.564" asserts="0">
+                    <results>
+                      <test-case name="B2BTI.UnitTest.B2BTI_Domain_Test.RouteBllTest_RouteListSortByType" executed="True" result="Success" success="True" time="9.892" asserts="2" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
