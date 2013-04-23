@@ -22,7 +22,7 @@ namespace 后台
             {
                 test_string += temp.Name + "<br>";
             }
-            lbTestString.Text = tesSt_string;
+            lbTestString.Text = test_string;
 
         }
     }

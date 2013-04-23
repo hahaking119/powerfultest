@@ -48,6 +48,7 @@ namespace B2BTI.Domain.BLL
         {
             return rl.OrderByDescending(r => r.PostTime);
         }
+        
         public IQueryable<Route> RouteListSortByBidNumber(IQueryable<Route> rl) 
         {
             return rl.OrderBy(r => r.BidNumber);

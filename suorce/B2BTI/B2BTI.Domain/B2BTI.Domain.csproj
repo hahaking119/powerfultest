@@ -60,15 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract_DLL\IBidBLL.cs" />
-    <Compile Include="Abstract_DLL\IJournalBLL.cs" />
-    <Compile Include="Abstract_DLL\IPlaceBLL.cs" />
-    <Compile Include="Abstract_DLL\IRouteBLL.cs" />
+    <Compile Include="Abstract_BLL\IBidBLL.cs" />
+    <Compile Include="Abstract_BLL\IJournalBLL.cs" />
+    <Compile Include="Abstract_BLL\IPlaceBLL.cs" />
+    <Compile Include="Abstract_BLL\IRouteBLL.cs" />
+    <Compile Include="Abstract_BLL\ISceneryBLL.cs" />
     <Compile Include="Abstract_Repository\IBidRepository.cs" />
     <Compile Include="Abstract_Repository\IRouteRepository.cs" />
-    <Compile Include="Abstract_DLL\ISceneryBLL.cs" />
     <Compile Include="Abstract_Repository\IUserRepository.cs" />
+    <Compile Include="BLL\BidBLL.cs" />
+    <Compile Include="BLL\JournalBLL.cs" />
+    <Compile Include="BLL\PlaceBLL.cs" />
     <Compile Include="BLL\RouteBLL.cs" />
+    <Compile Include="BLL\SceneryBLL.cs" />
     <Compile Include="Concrete\B2BTIDbContextInitializer.cs" />
     <Compile Include="Concrete\B2BTIDbContext.cs" />
     <Compile Include="Entity\Bid.cs" />
