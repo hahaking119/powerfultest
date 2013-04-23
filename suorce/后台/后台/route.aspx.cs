@@ -122,19 +122,19 @@ namespace 后台
 
             return "success";
         }
-        [WebMethod]
-        public static string UnFreezeRoute(int id)
-        {
-            SqlConnection conn = new SqlConnection(StrConn);
-            SqlCommand cmdfreeze = new SqlCommand();
-            cmdfreeze.Connection = conn;
-            conn.Open();
-            cmdfreeze.CommandText = ("update [Route] set UserState='正常' where RouteId=" + id + "");
-            cmdfreeze.ExecuteNonQuery();
-            conn.Close();
+        //[WebMethod]
+        //public static string UnFreezeRoute(int id)
+        //{
+        //    SqlConnection conn = new SqlConnection(StrConn);
+        //    SqlCommand cmdfreeze = new SqlCommand();
+        //    cmdfreeze.Connection = conn;
+        //    conn.Open();
+        //    cmdfreeze.CommandText = ("update [Route] set UserState='正常' where RouteId=" + id + "");
+        //    cmdfreeze.ExecuteNonQuery();
+        //    conn.Close();
 
-            return "success";
-        }
+        //    return "success";
+        //}
         [WebMethod]
         public static string UnPassRoute(int id)
         {
