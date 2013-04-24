@@ -6,51 +6,89 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
-using System.Collections;
 using System.Web.Services;
+
 
 namespace 后台
 {
     public partial class WebForm7 : System.Web.UI.Page
     {
+        public static string RouteName;
+        public static string RouteStartTime;
+        public static string RouteDays;
+        public static string Pubdate;
         public static string CompanyName;
-        public static string CompanyAddress;
-        public static string Email;
-        public static string CompanyTel;
-        public static string Principal;
-        public static string Phone;
-        public static string Description;
-        public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+        public static string RouteType;
+        public static string RouteState;
+        public static string[] PlaceDays = new string[20];
+        public static string[] PlacePrice = new string[20];
+        public static string[] PlaceStartTime = new string[20];
+        public static string[] PlaceName = new string[20];
+        public static string[] PlaceDetail = new string[20];
+        public static string[] PlacePnum = new string[20];
 
-        public List<usersys> listUser = new List<usersys>();
+        public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+        public static int i;
+        public static int length;
+        public List<Routesys> ListRoute = new List<Routesys>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(StrConn);
             conn.Open();
-            //MessageBox.Show("数据库连接成功", "好");
+
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "Select * FROM [User]";
+            cmd.CommandText = "Select [route].*,CompanyName from [Route],[UserDetail] Where [Route].UserId =[UserDetail].UserId";
             SqlDataReader reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
-
-                usersys u = new usersys();
-                u.UserName = reader["UserName"].ToString();
-                u.Date = reader["Date"].ToString();
-                u.Rank = reader["Rank"].ToString();
-                u.UserState = reader["UserState"].ToString();
-                listUser.Add(u);
-
-                /*  TextBox1.Text = reader["UserName"].ToString();*/
+                Routesys r = new Routesys();
+                r.RouteId = reader["RouteId"].ToString();
+                r.UserId = reader["UserId"].ToString();
+                r.RouteName = reader["RouteName"].ToString();
+                r.CompanyName = reader["CompanyName"].ToString();
+                r.Pubdate = reader["Pubdate"].ToString();
+                r.RouteState = reader["RouteState"].ToString();
+                ListRoute.Add(r);
             }
-            //length=listUser.Count;
-            /*TextBox1.Text = UserName[1];*/
             reader.Close();
             conn.Close();
-            //Check("莫雄剑");
         }
+        [WebMethod]
+        public static void RouteCheck(int id)
+        {
+            SqlConnection conn = new SqlConnection(StrConn);
+            conn.Open();
+            i = 0;
+            length = 0;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT [Route].*,[Place].* FROM [Place] left join [Route] on [Place].RouteId=[Route].RouteId Where [Place].RouteId=" + id + "";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                RouteName = reader["RouteName"].ToString();
+                RouteStartTime = reader["StartTime"].ToString();
+                RouteDays = reader["RouteDays"].ToString();
+                Pubdate = reader["Pubdate"].ToString();
+                CompanyName = reader["CompanyName"].ToString();
+                RouteType = reader["RouteType"].ToString();
+                RouteState = reader["RouteState"].ToString();
+                PlaceName[i] = reader["PlaceName"].ToString();
+                PlaceStartTime[i] = reader["PlaceStartTime"].ToString();
+                PlacePrice[i] = reader["PlacePrice"].ToString();
+                PlaceDays[i] = reader["PlaceDays"].ToString();
+                PlaceDetail[i] = reader["PlaceDetail"].ToString();
+                PlacePnum[i] = reader["PlacePnum"].ToString();
+                i++;
+            }
+            for (int j = 0; j < PlaceName.Length; j++)
+            {
+                if (PlaceName[j] != null)
+                    length++;
+            }
+        }
+
     }
 }

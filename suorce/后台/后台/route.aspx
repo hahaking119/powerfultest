@@ -168,10 +168,7 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="row-fluid sortable">
-				
-							<div class="row-fluid sortable">		
+							<div id = "check" class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-user"></i> 路线信息</h2>
@@ -372,6 +369,35 @@
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
 	
+<%--********************************查看响应*******************************--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $(".btn-primary").click(function () {
+            var RouteId = $(this).attr("id");
+            $.ajax({
+                type: "Post",
+                url: "route.aspx/RouteCheck",
+                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                data: "{ 'id': '" + RouteId + "' }",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    //返回的数据用data.d获取内容      
+                    //                                $("#check").load("RouteDetail.aspx");
+                    alert("success");
+
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+
+
+
+        });
+    });
+    </script>
+
 
     <%-- **************************************审核响应script*********************************--%>
 <script type="text/javascript" language="javascript">
