@@ -288,12 +288,31 @@
 				</div><!--/span-->
 			
 			</div><!--/row-->
+            </div>
 		
 	<hr>
+<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary">Save changes</a>
+			</div>
+		</div>
+        <hr>
+        <hr>
+			<hr>
 		<footer>
 			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
 			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
 		</footer>
+		
+	</div>
 
 	<!-- external javascript
 	================================================== -->
@@ -384,7 +403,7 @@
                 success: function (data) {
                     //返回的数据用data.d获取内
                    $("#check").load("RouteDetail.aspx");
-                    alert("success");
+                   
 
                 },
                 error: function (err) {

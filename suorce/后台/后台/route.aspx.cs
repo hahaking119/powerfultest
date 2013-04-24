@@ -18,6 +18,7 @@ namespace 后台
             public string Pubdate;
             public string RouteState;
             public string CompanyName;
+            public string RouteDetails;
         }
     public partial class WebForm5 : System.Web.UI.Page
     {
@@ -28,6 +29,7 @@ namespace 后台
         public static string CompanyName;
         public static string RouteType;
         public static string RouteState;
+        public static string RouteDetails;
         public static string[] PlaceDays = new string[20];
         public static string[] PlacePrice = new string[20];
         public static string[] PlaceStartTime= new string[20];
@@ -57,10 +59,13 @@ namespace 后台
                 r.RouteName=reader["RouteName"].ToString();
                 r.CompanyName=reader["CompanyName"].ToString();
                 r.Pubdate=reader["Pubdate"].ToString();
-                r.RouteState=reader["RouteState"].ToString();              
+                r.RouteState=reader["RouteState"].ToString();
+                r.RouteDetails = reader["RouteDetails"].ToString();
+                ListRoute.Add(r);
             }
             reader.Close();
             conn.Close();
+
         }
         [WebMethod]
         public static void RouteCheck(int id)
@@ -79,9 +84,10 @@ namespace 后台
                 RouteStartTime=reader["StartTime"].ToString();
                 RouteDays=reader["RouteDays"].ToString();
                 Pubdate=reader["Pubdate"].ToString();
-                CompanyName=reader["CompanyName"].ToString();
+                //CompanyName=reader["CompanyName"].ToString();
                 RouteType=reader["RouteType"].ToString();
                 RouteState=reader["RouteState"].ToString();
+                RouteDetails = reader["RouteDetails"].ToString();
                 PlaceName[i] = reader["PlaceName"].ToString();
                 PlaceStartTime[i] = reader["PlaceStartTime"].ToString();
                 PlacePrice[i] = reader["PlacePrice"].ToString();
@@ -90,10 +96,12 @@ namespace 后台
                 PlacePnum[i] = reader["PlacePnum"].ToString();
                 i++;
             }
-            for (int j = 0; j < PlaceName.Length; j++)
+            for (int j = 0; j < PlaceName.Length ; j++)
             {
                 if (PlaceName[j] != null)
-                    length++;
+                  length++;
+                if (PlaceName[j] == null)
+                    break;
             }
         }
         [WebMethod]
