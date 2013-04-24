@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="后台.WebForm1" %>
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html lang="en">
@@ -85,7 +87,7 @@
 								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="admin123456" />
 							</div>
 							<div class="clearfix"></div>
-
+                            
 							<div class="input-prepend">
 							<label class="remember" for="remember"><input type="checkbox" id="remember" />记住密码</label>
 							</div>
@@ -96,6 +98,7 @@
 							<button id="login" class="btn btn-primary">登陆</button>
 							</p>
 						</fieldset>
+                        
 					
 				</div><!--/span-->
 			</div><!--/row-->
@@ -183,6 +186,8 @@
             $("#login").click(function () {
                 var username = document.getElementById('username').value;
                 var password = document.getElementById('password').value;
+                
+                
                 $.ajax({
                     type: "Post",
                     url: "login.aspx/Login",

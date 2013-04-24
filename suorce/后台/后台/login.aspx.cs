@@ -10,13 +10,14 @@ using System.Data.SqlClient;
 
 
 namespace 后台
-{
+{       
     public partial class WebForm1 : System.Web.UI.Page
     {
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            
         }
         [WebMethod]
         public static string Login(string str1,string str2)
@@ -30,7 +31,7 @@ namespace 后台
             con.Close();
             if (n > 0) return "success";
             else return "False";
-           
+           //Session["UserName"] = 
         }
     }
 }
