@@ -19,6 +19,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
+    <script src="js/jquery-1.4.1-vsdoc.js" type="text/javascript"></script>
+    <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
@@ -68,11 +70,11 @@
 			</div><!--/row-->
 			
 			<div class="row-fluid">
-				<div class="well span5 center login-box">
+		<div class="well span5 center login-box">
 					<div class="alert alert-info">
 						请输入你的用户名和密码
 					</div>
-					<form class="form-horizontal" action="main.aspx" method="post">
+				
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="admin" />
@@ -89,11 +91,12 @@
 							</div>
 							<div class="clearfix"></div>
 
-							<p class="center span5">
-							<button type="submit" class="btn btn-primary">登陆</button>
+							<%--<p >--%>
+                            <p class="center span5">
+							<button id="login" class="btn btn-primary">登陆</button>
 							</p>
 						</fieldset>
-					</form>
+					
 				</div><!--/span-->
 			</div><!--/row-->
 				</div><!--/fluid-row-->
@@ -173,6 +176,36 @@
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        $(function () {
+
+            $("#login").click(function () {
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                $.ajax({
+                    type: "Post",
+                    url: "login.aspx/Login",
+                    //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                    data: "{ 'str1':'" + username + "' , 'str2': '" + password + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        //返回的数据用data.d获取内容      
+                        //$("#look").load("shuaxin.aspx");
+                        if (data.d == "success")
+                            window.location.href = '../main.aspx';
+                        else
+                            alert("账号密码错误，请重新输入");
+
+                    },
+                    error: function (err) {
+                        alert(err);
+                    }
+                });
+            });
+        });
+  </script>
 	
 		
 </body>
