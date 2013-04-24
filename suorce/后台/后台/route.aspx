@@ -181,12 +181,38 @@
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
+
+                    <div class ="box span12"id="choose" style="width:98% ;height:40px;background-color:#FFDAC8; margin-left:10px;position:relative">
+                    <div id="left" style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="choose" value=" "  onclick="if(this.checked==true) { checkAll('choose'); } else { clearAll('choose'); }" />全选
+                    </div>
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { Noexamine('choose'); } else { clearNoExamine('choose'); }" />未审核
+                    </div>
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { examine('choose'); } else { clearExamine('choose'); }" />审核未通过
+                    </div>                                     
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { normal('choose'); } else { clearNormal('choose'); }" />正常
+                    </div>
+                    <div  style="float:left;margin-top:10px;margin-left:10px;"><input type="checkbox" name="check" value=" "  onclick="if(this.checked==true) { freeze('choose'); } else { clearFreeze('choose'); }" />已冻结
+                    </div>
+                    <div id="right" style="float:right;border:1;"> <button  id = "fuxuan" style="height:40px; width:100px"class=" btn-danger" >
+                                    <i class="icon-edit icon-white"></i>
+                                    冻结</button>
+                    </div>
+                    <div id="Div1" style="float:right;border:1;"> <button  id = "examine" style="height:40px; width:100px" class=" btn-inverse " >
+                                    <i class="icon-edit icon-blue"></i>
+                                    审核</button>
+                    </div>
+                      <div id="Div2" style="float:right;border:1;"> <button  id = "unfreeze" style="height:40px; width:100px" class="btn-large " >
+                                    <i class="icon-edit icon-blue"></i>
+                                    解冻</button>
+                    </div>
+                    </div>
 		
 					<div class="box-content">
 						
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                  <th>选择</th>
 								  <th>路线名</th>
 								  <th>发布时间</th>
 								  <th>路线发布公司</th>
@@ -195,968 +221,70 @@
 							  </tr>
 						  </thead>   
 						  <tbody>
-							<tr>
-								<td>David R</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
+
+                              <%   for (int i = 0; i < ListRoute.Count; i++)
+                             {
+                                  %>
+                             
+                                <tr>
+                                <td id="quanxuan"><input type="checkbox" name="choose" value="<%=ListRoute[i].RouteName%>"/></td>
+								<td><%=ListRoute[i].RouteName%></td>
+								<td class="center" ><%=ListRoute[i].Pubdate%></td>
+								<td class="center"><%=ListRoute[i].CompanyName%></td>
 								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
+                                <%if (ListRoute[i].RouteState == "正常")
+                                  {%>                                
+									<span class="label label-success">正常</span> </td>
+                                    <%}
+                                  else if (ListRoute[i].RouteState == "冻结")
+                                  {%>
+                                    <span class="label label-warning">冻结</span></td>
+                                    
+                                  <%}
+                                  else if (ListRoute[i].RouteState == "审核未通过")
+                                  {%>
+                                  <span class="label label-info">审核未通过</span></td>
+                                   <%}
+                                  else
+                                  {%>
+                                   <span class="label label-">未审核</span></td>
+                                   <%} %>
+
+
+								
 								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-		
-								</td>
-							</tr>
-							<tr>
-								<td>Chris Jack</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
+                                     <a >
+                                    <button  id = "<%= ListRoute[i].RouteId %>" class=" btn btn-primary" name="查看">
+                                    <i class="icon-eye-open icon-white"></i>
+                                    查看</button>
+                                    </a>
+                                     <a >
+                                    <button  id = "<%= ListRoute[i].RouteId %>" class="btn btn-warning" >
+                                    <i class="icon-check icon-white"></i>
+                                    审核</button>
+                                    </a>
+                                    <a >
+                                    <button  id ="<%= ListRoute[i].RouteId %>" class="btn btn-success" >
+                                    <i class="icon-pencil icon-white"></i>
+                                    解冻</button>
+                                    </a>									
+                                   <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
+                                    <a >
+                                    <button  id = "<%= ListRoute[i].RouteId %>" class="btn btn-info" >
+                                    <i class="icon-edit icon-white"></i>
+                                    冻结</button>
+                                    </a>                             									
+                                   <%-- <a >
+                                    <button  id = "<%= listUser[i].UserName %>" class="btn-inverse" >
+                                    <i class="icon-remove icon-white"></i>
+                                    删除</button>
+                                    </a>--%>
 								</td>
 							</tr>
-							<tr>
-								<td>Jack Chris</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Muhammad Usman</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Sheikh Heera</td>
-								<td class="center">2012/02/01</td>
-								<td class="center">Staff</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Helen Garner</td>
-								<td class="center">2012/02/01</td>
-								<td class="center">Staff</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Saruar Ahmed</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Ahemd Saruar</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Habib Rizwan</td>
-								<td class="center">2012/01/21</td>
-								<td class="center">Staff</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Rizwan Habib</td>
-								<td class="center">2012/01/21</td>
-								<td class="center">Staff</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Amrin Sana</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">Staff</td>
-								<td class="center">
-										<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Sana Amrin</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Ifrah Jannat</td>
-								<td class="center">2012/06/01</td>
-								<td class="center">Admin</td>
-								<td class="center">
-								<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Jannat Ifrah</td>
-								<td class="center">2012/06/01</td>
-								<td class="center">Admin</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-								<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Dave Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Brown Robert</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Usman Muhammad</td>
-								<td class="center">2012/01/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-								<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Abdullah</td>
-								<td class="center">2012/02/01</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Dow John</td>
-								<td class="center">2012/02/01</td>
-								<td class="center">Admin</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>John R</td>
-								<td class="center">2012/02/01</td>
-								<td class="center">Admin</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Paul Wilson</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Wilson Paul</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Heera Sheikh</td>
-								<td class="center">2012/01/21</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Sheikh Heera</td>
-								<td class="center">2012/01/21</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-success">正常</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Andro Christopher</td>
-								<td class="center">2012/08/23</td>
-								<td class="center">Staff</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Jhon Doe</td>
-								<td class="center">2012/06/01</td>
-								<td class="center">Admin</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Lorem Ipsum</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Abraham</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Brown Blue</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>Worth Name</td>
-								<td class="center">2012/03/01</td>
-								<td class="center">Member</td>
-								<td class="center">
-									<span class="label label-important">待审核</span>
-								</td>
-								<td class="center">
-									<a class="btn btn-success" href="#">
-										<i class="icon-zoom-in icon-white"></i>  
-										查看                                            
-									</a>
-									<a class="btn btn-warning" href="#">
-										<i class="icon-pencil icon-white"></i>  
-										审核                                            
-									</a>
-									<a class="btnbtn-info" href="#">
-										<i class="icon-edit icon-white"></i>  
-										冻结                                            
-									</a>
-									<a class="btn btn-success" href="#">
-										<i class="icon-edit icon-white"></i>  
-										解冻                                            
-									</a>
-									<a class="btn btn-danger" href="#">
-										<i class="icon-trash icon-white"></i> 
-										删除
-									</a>
-								</td>
-							</tr>
+                      
+                           <%  } %>
+                            
+                       
 						  </tbody>
 					  </table>            
 					</div>
@@ -1244,6 +372,499 @@
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
 	
-		
+
+    <%-- **************************************审核响应script*********************************--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-warning").click(function () {
+            var username = $(this).attr("id");
+            var obj = $(this);
+            var obk = $(obj.parents("tr").children("td")[4]);
+            if ($(obk.children("span")).text() == "未审核" || $(obk.children("span")).text() == "审核未通过") {
+                $("#EX").show();
+                $("#dialog-pass").dialog({
+                    resizable: false,
+                    height: 140,
+                    modal: true,
+                    buttons: {
+                        "通过": function () {
+                            $.ajax({
+                                type: "Post",
+                                url: "user.aspx/UnFreeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            $(this).dialog("close");
+                        },
+                        "不通过": function () {
+                            $.ajax({
+                                type: "Post",
+                                url: "user.aspx/UNPass",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-info\">审核未通过</span>");
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+            else {
+                alert("该用户已通过审核，无须再进行审核！")
+
+            }
+        });
+    });
+    </script>
+
+  
+   <%--************************************************************解冻响应script--%>
+   <script type = "text/javascript">
+       $(function () {
+
+           $(".btn-success").click(function () {
+
+               var username = $(this).attr("id");
+               var obj = $(this);
+               var obk = $(obj.parents("tr").children("td")[4]);
+               if (obk.children("span").text() == "冻结") {
+                   $.ajax({
+                       type: "Post",
+                       url: "user.aspx/UnFreeze",
+                       //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                       data: "{ 'str': '" + username + "' }",
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function (data) {
+                           //返回的数据用data.d获取内容      
+                           $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                           //$("#look").load("shuaxin.aspx");
+                       },
+                       error: function (err) {
+                           alert(err);
+                       }
+                   });
+               }
+               else {
+                   alert("该用户不是冻结状态，无法解冻");
+               }
+               //禁用按钮的提交      
+               return false;
+           });
+       });
+    </script> 
+
+ 
+ 
+   <%-- *********************************************************冻结响应script****************--%>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $(".btn-info").click(function () {
+            var username = $(this).attr("id");
+            var obj = $(this);
+            var obk = $(obj.parents("tr").children("td")[4]);
+            if ($(obk.children("span")).text() == "正常") {
+                $("#msg").show();
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: 140,
+                    modal: true,
+                    buttons: {
+                        "冻结": function () {
+                            $.ajax({
+                                type: "Post",
+                                url: "user.aspx/Freeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            $(this).dialog("close");
+                        },
+                        "取消": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+            else {
+                alert("该用户状态异常，无法被冻结！");
+            }
+        });
+    });
+    </script>
+
+
+
+
+
+	<%--
+*********************************************复选框的操作****************************************--%>
+   <script type="text/javascript">
+       function checkAll(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                   el[i].checked = true;
+
+               }
+           }
+           $("#quanxuan span").addClass("checked");
+       }
+       function clearAll(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               if ((el[i].type == "checkbox") && (el[i].name == name)) {
+                   el[i].checked = false;
+               }
+           }
+           $("#quanxuan span").removeClass("checked");
+       }
+
+       function examine(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "审核未通过") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+       function clearExamine(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "审核未通过") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+
+       function freeze(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "冻结") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+
+       function clearFreeze(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "冻结") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+       function NoExamine(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "未审核") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+
+       function clearNoExamine(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "未审核") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+       function normal(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "正常") {
+                   el[i].checked = true;
+                   $(el[i]).parent().addClass("checked");
+               }
+           }
+
+       }
+
+       function clearNormal(name) {
+           var el = document.getElementsByTagName('input');
+           var len = el.length;
+           for (var i = 0; i < len; i++) {
+               var obj = $(el[i]);
+               if ($(obj.parents("tr").children("td")[4]).children('span').text() == "正常") {
+                   el[i].checked = false;
+                   $(el[i]).parent().removeClass("checked");
+               }
+           }
+
+       }
+   </script>
+  
+   <%--*********************************全选后冻结操作*****************************--%>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $("#fuxuan").click(function () {
+            //            var username = $(this).attr("id");
+            //            var obj = $(this);
+            $("#msg").show();
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "冻结": function () {
+
+                        //                        var ch = $(".quanxuan").children("div").children("span");
+                        var el = document.getElementsByTagName('input');
+                        var len = el.length;
+                        for (var i = 0; i < len; i++) {
+
+                            var obj = $(el[i]);
+                            if ($(el[i]).parent().hasClass('checked')) {
+                                var username = el[i].value;
+                                var obj = $(el[i]);
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
+                                $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/Freeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            }
+                        }
+                        $(this).dialog("close");
+                    },
+
+
+                    "取消": function () {
+                        $(this).dialog("close");
+                    }
+
+                }
+            });
+        });
+    });
+   
+   
+    </script>
+
+
+<%--*********************************全选后解冻操作*****************************--%>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#unfreeze").click(function () {
+            var el = document.getElementsByTagName('input');
+            var len = el.length;
+            for (var i = 0; i < len; i++) {
+
+                var obj = $(el[i]);
+                if ($(el[i]).parent().hasClass('checked')) {
+                    var username = el[i].value;
+                    var obj = $(el[i]);
+                    $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                    $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/unFreeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                }
+            }
+        });
+    });
+   
+   
+    </script>
+
+<%--*********************************全选后审核操作*****************************--%>
+
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#dialog:ui-dialog").dialog("destroy");
+        $("#examine").click(function () {
+            //            var username = $(this).attr("id");
+            //            var obj = $(this);
+            $("#EX").show();
+            $("#dialog-pass").dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "通过": function () {
+
+                        //                        var ch = $(".quanxuan").children("div").children("span");
+                        var el = document.getElementsByTagName('input');
+                        var len = el.length;
+                        for (var i = 0; i < len; i++) {
+
+                            var obj = $(el[i]);
+                            if ($(el[i]).parent().hasClass('checked')) {
+                                var username = el[i].value;
+                                var obj = $(el[i]);
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
+                                $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/UnFreeze",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            }
+                        }
+                        $(this).dialog("close");
+                    },
+
+
+                    "不通过": function () {
+                        var el = document.getElementsByTagName('input');
+                        var len = el.length;
+                        for (var i = 0; i < len; i++) {
+
+                            var obj = $(el[i]);
+                            if ($(el[i]).parent().hasClass('checked')) {
+                                var username = el[i].value;
+                                var obj = $(el[i]);
+                                $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-info\">审核未通过</span>");
+                                $.ajax(
+                            {
+                                type: "Post",
+                                url: "user.aspx/UnPass",
+                                //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
+                                data: "{ 'str': '" + username + "' }",
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    //返回的数据用data.d获取内容      
+                                    //$("#look").load("shuaxin.aspx");
+                                    return;
+
+                                },
+                                error: function (err) {
+                                    alert(err);
+                                }
+                            });
+                            }
+                        }
+                        $(this).dialog("close");
+                    }
+
+                }
+            });
+        });
+    });
+   
+   
+    </script> 
+
+ <div id="dialog-confirm" title="冻结提示?">
+        <p id="msg" style="display: none;">
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            确认要冻结该用户吗？</p>
+    </div>
+
+      <div id="dialog-pass" title="审核提示?">
+        <p id="EX" style="display: none;">
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            是否通过该用户的注册申请？</p>
+    </div>   
+    	
+
 </body>
 </html>

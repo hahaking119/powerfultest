@@ -339,7 +339,7 @@
     <Content Include="user.aspx" />
     <Content Include="route.aspx" />
     <Content Include="contract.aspx" />
-    <Content Include="shuaxin.aspx" />
+    <Content Include="RouteDetail.aspx" />
     <Content Include="admin-refresh.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -445,12 +445,12 @@
     <Compile Include="contract.aspx.designer.cs">
       <DependentUpon>contract.aspx</DependentUpon>
     </Compile>
-    <Compile Include="shuaxin.aspx.cs">
-      <DependentUpon>shuaxin.aspx</DependentUpon>
+    <Compile Include="RouteDetail.aspx.cs">
+      <DependentUpon>RouteDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="shuaxin.aspx.designer.cs">
-      <DependentUpon>shuaxin.aspx</DependentUpon>
+    <Compile Include="RouteDetail.aspx.designer.cs">
+      <DependentUpon>RouteDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin-refresh.aspx.cs">
       <DependentUpon>admin-refresh.aspx</DependentUpon>
@@ -510,7 +510,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1440</DevelopmentServerPort>
+          <DevelopmentServerPort>8568</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
