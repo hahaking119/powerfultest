@@ -382,8 +382,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    //返回的数据用data.d获取内容      
-                    //                                $("#check").load("RouteDetail.aspx");
+                    //返回的数据用data.d获取内
+                   $("#check").load("RouteDetail.aspx");
                     alert("success");
 
                 },

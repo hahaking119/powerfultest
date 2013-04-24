@@ -75,7 +75,7 @@ namespace 后台
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                RouteName=reader["RoutName"].ToString();
+                RouteName=reader["RouteName"].ToString();
                 RouteStartTime=reader["StartTime"].ToString();
                 RouteDays=reader["RouteDays"].ToString();
                 Pubdate=reader["Pubdate"].ToString();
