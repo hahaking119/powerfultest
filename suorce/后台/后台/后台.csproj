@@ -339,7 +339,6 @@
     <Content Include="user.aspx" />
     <Content Include="route.aspx" />
     <Content Include="contract.aspx" />
-    <Content Include="123.aspx" />
     <Content Include="admin-refresh.aspx" />
     <Content Include="RouteDetail.aspx" />
   </ItemGroup>
@@ -445,13 +444,6 @@
     </Compile>
     <Compile Include="contract.aspx.designer.cs">
       <DependentUpon>contract.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="123.aspx.cs">
-      <DependentUpon>123.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="123.aspx.designer.cs">
-      <DependentUpon>123.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin-refresh.aspx.cs">
       <DependentUpon>admin-refresh.aspx</DependentUpon>
