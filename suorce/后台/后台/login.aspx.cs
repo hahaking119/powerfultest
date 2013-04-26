@@ -25,7 +25,7 @@ namespace 后台
             SqlConnection con = new SqlConnection(StrConn);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText ="select count (*) from [User] where UserName='" + str1 + "' and Password='" + str2 + "' and Rank=3 or Rank =4";
+            cmd.CommandText ="select count (*) from [User] where UserName='" + str1 + "' and Password='" + str2 + "' and (Rank=3 or Rank =4) and UserState='正常'";
             con.Open();
             int n = int.Parse(cmd.ExecuteScalar().ToString());
             con.Close();
