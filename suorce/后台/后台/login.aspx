@@ -201,7 +201,7 @@
                         if (data.d == "success")
                             window.location.href = '../main.aspx';
                         else
-                            alert("账号密码错误，请重新输入");
+                            alert("账号密码错误或者账号已被冻结，请重新输入");
 
                     },
                     error: function (err) {
