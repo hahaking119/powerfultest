@@ -14,6 +14,7 @@ namespace 后台
     public partial class WebForm1 : System.Web.UI.Page
     {
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+        public static string SUserName;
         protected void Page_Load(object sender, EventArgs e)
         {
           
@@ -23,8 +24,8 @@ namespace 后台
         [WebMethod]
         public static string Login(string str1,string str2)
         {
-            HttpContext.Current.Session["UserName"] = str1;
-            
+            //HttpContext.Current.Session["UserName"] = str1;
+            SUserName = str1;
             SqlConnection con = new SqlConnection(StrConn);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
