@@ -185,6 +185,7 @@
             </asp:DataList>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><a class="ajax-link" href="gallery.html"><span class="hidden-tablet"> 
             <asp:Label ID="lbTestString" runat="server"></asp:Label>
+            <asp:Button ID="btnOpen" runat="server" onclick="btnOpen_Click" Text="Button" />
             </span></a></label>
             <!--/fluid-row-->
 				
