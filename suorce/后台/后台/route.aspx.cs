@@ -19,6 +19,7 @@ namespace 后台
             public string RouteState;
             public string CompanyName;
             public string RouteDetails;
+            public string ContractState;
         }
     public partial class WebForm5 : System.Web.UI.Page
     {
@@ -30,6 +31,7 @@ namespace 后台
         public static string RouteType;
         public static string RouteState;
         public static string RouteDetails;
+        public static string ContractState;
         public static string[] PlaceDays = new string[20];
         public static string[] PlacePrice = new string[20];
         public static string[] PlaceStartTime= new string[20];
@@ -61,6 +63,7 @@ namespace 后台
                 r.Pubdate=reader["Pubdate"].ToString();
                 r.RouteState=reader["RouteState"].ToString();
                 r.RouteDetails = reader["RouteDetails"].ToString();
+                r.ContractState = reader["ContractState"].ToString();
                 ListRoute.Add(r);
             }
             reader.Close();
@@ -88,6 +91,7 @@ namespace 后台
                 RouteType=reader["RouteType"].ToString();
                 RouteState=reader["RouteState"].ToString();
                 RouteDetails = reader["RouteDetails"].ToString();
+                ContractState = reader["ContractState"].ToString();
                 PlaceName[i] = reader["PlaceName"].ToString();
                 PlaceStartTime[i] = reader["PlaceStartTime"].ToString();
                 PlacePrice[i] = reader["PlacePrice"].ToString();

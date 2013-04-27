@@ -215,6 +215,7 @@
 								  <th>路线发布公司</th>
 								  <th>状态</th>
 								  <th>管理</th>
+                                  <th>合同状态</th>
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -250,9 +251,10 @@
 
 								
 								<td class="center">
-                                     <a >
+                                     <a  >
                                     <button  id = "<%= ListRoute[i].RouteId %>" class=" btn btn-primary" name="查看">
                                     <i class="icon-eye-open icon-white"></i>
+                                    
                                     查看</button>
                                     </a>
                                      <a >
@@ -263,6 +265,7 @@
                                     <a >
                                     <button  id ="<%= ListRoute[i].RouteId %>" class="btn btn-success" >
                                     <i class="icon-pencil icon-white"></i>
+                                    
                                     解冻</button>
                                     </a>									
                                    <%-- <%string Btnid = i.ToString(); string UserName = listUser[i].UserName;%>--%>
@@ -277,6 +280,18 @@
                                     删除</button>
                                     </a>--%>
 								</td>
+                                <td> <%if (ListRoute[i].ContractState == "已签署")
+                                  {%>                                
+									<span class="label label-success">已签署</span> </td>
+                                    <%}                               
+                                  else if (ListRoute[i].RouteState == "未签署")
+                                  {%>
+                                  <span class="label label-info">未签署</span></td>
+                                   <%}
+                                  else
+                                  {%>
+                                   <span class="label label-warning">未订立</span></td>
+                                   <%} %></td>
 							</tr>
                       
                            <%  } %>
