@@ -77,6 +77,17 @@ namespace 后台
             conn.Open();
             i = 0;
             length = 0;
+
+            for (int k = 0; k < 20; k++)
+            {
+                PlaceName[k] = null;
+                PlaceStartTime[k] = null;
+                PlacePrice[k] = null;
+                PlaceDays[k] = null;
+                PlaceDetail[k] = null;
+                PlacePnum[k] = null;
+ 
+            }
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT [Route].*,[Place].* FROM [Place] left join [Route] on [Place].RouteId=[Route].RouteId Where [Place].RouteId="+id+"";
@@ -108,6 +119,7 @@ namespace 后台
                     break;
             }
         }
+
         [WebMethod]
         public static string FreezeRoute(int id)
         {
@@ -128,7 +140,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText = ("update [Route] set UserState='正常' where RouteId=" + id + "");
+            cmdfreeze.CommandText = ("update [Route] set RouteState='正常' where RouteId=" + id + "");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
 
@@ -154,7 +166,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText = ("update [Route] set UserState='审核未通过' where RouteId=" + id + "");
+            cmdfreeze.CommandText = ("update [Route] set RouteState='审核未通过' where RouteId=" + id + "");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
 

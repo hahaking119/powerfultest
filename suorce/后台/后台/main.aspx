@@ -89,9 +89,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">个人资料</a></li>
+						<li><a href="#">admin</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">退出登录</a></li>
+						<li><a href="login.aspx">注销</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->

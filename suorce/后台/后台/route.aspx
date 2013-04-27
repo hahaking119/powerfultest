@@ -98,7 +98,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="login.aspx">注销</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -194,14 +194,15 @@
                                     <i class="icon-edit icon-white"></i>
                                     冻结</button>
                     </div>
+                     <div id="Div2" style="float:right;border:1;"> <button  id = "unfreeze" style="height:40px; width:100px" class="btn-large " >
+                                    <i class="icon-edit icon-blue"></i>
+                                    解冻</button>
+                    </div>
                     <div id="Div1" style="float:right;border:1;"> <button  id = "examine" style="height:40px; width:100px" class=" btn-inverse " >
                                     <i class="icon-edit icon-blue"></i>
                                     审核</button>
                     </div>
-                      <div id="Div2" style="float:right;border:1;"> <button  id = "unfreeze" style="height:40px; width:100px" class="btn-large " >
-                                    <i class="icon-edit icon-blue"></i>
-                                    解冻</button>
-                    </div>
+                     
                     </div>
 		
 					<div class="box-content">
@@ -214,8 +215,9 @@
 								  <th>发布时间</th>
 								  <th>路线发布公司</th>
 								  <th>状态</th>
-								  <th>管理</th>
                                   <th>合同状态</th>
+								  <th>管理</th>
+                                  
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -225,7 +227,7 @@
                                   %>
                              
                                 <tr>
-                                <td id="quanxuan"><input type="checkbox" name="choose" value="<%=ListRoute[i].RouteName%>"/></td>
+                                <td id="quanxuan"><input type="checkbox" name="choose" value="<%=ListRoute[i].RouteId%>"/></td>
 								<td><%=ListRoute[i].RouteName%></td>
 								<td class="center" ><%=ListRoute[i].Pubdate%></td>
 								<td class="center"><%=ListRoute[i].CompanyName%></td>
@@ -249,10 +251,28 @@
                                    <%} %>
 
 
-								
+								 <td> <%if (ListRoute[i].ContractState == "已签署")
+                                  {%>  
+                                    <a href="ContractSubmit.aspx" target="_blank"  data-content="合同已签署，点击查看合同内容" title="请点击！" data-rel="popover" class="label label-success">
+                                     <i class="icon-eye-open icon-white"></i>
+                                     已签署</a> </td>
+                                    <%}                               
+                                  else if (ListRoute[i].RouteState == "未签署")
+                                  {%>
+                                  <a href="ContractSubmit.aspx" target="_blank" data-content="合同已订立，但是尚未签署，点击查看合同内容" title="请点击！"data-rel="popover" class="label label-info">
+                                  <i class="icon-eye-open icon-white"></i>
+                                  未签署</a> </td>
+                                   <%}
+                                  else
+                                  {%>
+                                   <a href="#" target="_blank" title="尚未起草或签订合同，点击无效" data-rel="tooltip" class="label label-warning">
+                                   <i class="icon-remove icon-white"></i>
+                                   未订立</a> </td>
+                                   <%} %></td>
+
 								<td class="center">
-                                     <a  >
-                                    <button  id = "<%= ListRoute[i].RouteId %>" class=" btn btn-primary" name="查看">
+                                     <a href="RouteDetail.aspx" target="_blank" >
+                                    <button  id = "<%= ListRoute[i].RouteId %>" class=" btn btn-primary" name="btn-check">
                                     <i class="icon-eye-open icon-white"></i>
                                     
                                     查看</button>
@@ -280,18 +300,7 @@
                                     删除</button>
                                     </a>--%>
 								</td>
-                                <td> <%if (ListRoute[i].ContractState == "已签署")
-                                  {%>                                
-									<span class="label label-success">已签署</span> </td>
-                                    <%}                               
-                                  else if (ListRoute[i].RouteState == "未签署")
-                                  {%>
-                                  <span class="label label-info">未签署</span></td>
-                                   <%}
-                                  else
-                                  {%>
-                                   <span class="label label-warning">未订立</span></td>
-                                   <%} %></td>
+                               
 							</tr>
                       
                            <%  } %>
@@ -417,7 +426,7 @@
                 dataType: "json",
                 success: function (data) {
                     //返回的数据用data.d获取内
-                   $("#check").load("RouteDetail.aspx");
+//                   $("#check").load("RouteDetail.aspx");
                    
 
                 },
@@ -438,7 +447,7 @@
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
         $(".btn-warning").click(function () {
-            var username = $(this).attr("id");
+            var RouteId = $(this).attr("id");
             var obj = $(this);
             var obk = $(obj.parents("tr").children("td")[4]);
             if ($(obk.children("span")).text() == "未审核" || $(obk.children("span")).text() == "审核未通过") {
@@ -451,9 +460,9 @@
                         "通过": function () {
                             $.ajax({
                                 type: "Post",
-                                url: "user.aspx/UnFreeze",
+                                url: "route.aspx/UnFreezeRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -470,9 +479,9 @@
                         "不通过": function () {
                             $.ajax({
                                 type: "Post",
-                                url: "user.aspx/UNPass",
+                                url: "route.aspx/UNPassRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -505,15 +514,15 @@
 
            $(".btn-success").click(function () {
 
-               var username = $(this).attr("id");
+               var RouteId = $(this).attr("id");
                var obj = $(this);
                var obk = $(obj.parents("tr").children("td")[4]);
                if (obk.children("span").text() == "冻结") {
                    $.ajax({
                        type: "Post",
-                       url: "user.aspx/UnFreeze",
+                       url: "route.aspx/UnFreezeRoute",
                        //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                       data: "{ 'str': '" + username + "' }",
+                       data: "{ 'id': '" + RouteId + "' }",
                        contentType: "application/json; charset=utf-8",
                        dataType: "json",
                        success: function (data) {
@@ -542,7 +551,7 @@
     $(function () {
         $("#dialog:ui-dialog").dialog("destroy");
         $(".btn-info").click(function () {
-            var username = $(this).attr("id");
+            var RouteId = $(this).attr("id");
             var obj = $(this);
             var obk = $(obj.parents("tr").children("td")[4]);
             if ($(obk.children("span")).text() == "正常") {
@@ -555,9 +564,9 @@
                         "冻结": function () {
                             $.ajax({
                                 type: "Post",
-                                url: "user.aspx/Freeze",
+                                url: "route.aspx/FreezeRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -742,15 +751,17 @@
 
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
-                                var username = el[i].value;
+                                var RouteId = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
                                 $.ajax(
                             {
                                 type: "Post",
-                                url: "user.aspx/Freeze",
+                                url: "route.aspx/FreezeRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -760,7 +771,7 @@
 
                                 },
                                 error: function (err) {
-                                    alert(err);
+                                    return;
                                 }
                             });
                             }
@@ -793,15 +804,17 @@
 
                 var obj = $(el[i]);
                 if ($(el[i]).parent().hasClass('checked')) {
-                    var username = el[i].value;
+                    var RouteId = el[i].value;
+                    $(el[i]).parent().removeClass("checked");
+                    el[i].checked = false;
                     var obj = $(el[i]);
                     $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
                     $.ajax(
                             {
                                 type: "Post",
-                                url: "user.aspx/unFreeze",
+                                url: "route.aspx/UnFreezeRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -811,7 +824,7 @@
 
                                 },
                                 error: function (err) {
-                                    alert(err);
+                                    return;
                                 }
                             });
                 }
@@ -845,15 +858,17 @@
 
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
-                                var username = el[i].value;
+                                var RouteId = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
                                 $.ajax(
                             {
                                 type: "Post",
-                                url: "user.aspx/UnFreeze",
+                                url: "route.aspx/UnFreezeRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -863,7 +878,7 @@
 
                                 },
                                 error: function (err) {
-                                    alert(err);
+                                    return;
                                 }
                             });
                             }
@@ -879,15 +894,15 @@
 
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
-                                var username = el[i].value;
+                                var RouteId = el[i].value;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-info\">审核未通过</span>");
                                 $.ajax(
                             {
                                 type: "Post",
-                                url: "user.aspx/UnPass",
+                                url: "route.aspx/UnPassRoute",
                                 //方法传参的写法一定要对，str为形参的名字,str2为第二个形参的名字      
-                                data: "{ 'str': '" + username + "' }",
+                                data: "{ 'id': '" + RouteId + "' }",
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (data) {
@@ -897,7 +912,7 @@
 
                                 },
                                 error: function (err) {
-                                    alert(err);
+                                    return;
                                 }
                             });
                             }
@@ -922,7 +937,7 @@
       <div id="dialog-pass" title="审核提示?">
         <p id="EX" style="display: none;">
             <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-            是否通过该用户的注册申请？</p>
+            是否通过该路线发布申请？</p>
     </div>   
     	
 

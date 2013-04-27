@@ -104,7 +104,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.aspx">Logout</a></li>
+						<li><a href="login.aspx">注销</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -681,6 +681,8 @@
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
                                 var username = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
                                 $.ajax(
@@ -731,6 +733,8 @@
                 var obj = $(el[i]);
                 if ($(el[i]).parent().hasClass('checked')) {
                     var username = el[i].value;
+                    $(el[i]).parent().removeClass("checked");
+                    el[i].checked = false;
                     var obj = $(el[i]);
                     $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
                     $.ajax(

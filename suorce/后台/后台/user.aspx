@@ -134,7 +134,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="login.aspx">注销</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -229,13 +229,14 @@
                                     <i class="icon-edit icon-white"></i>
                                     冻结</button>
                     </div>
-                    <div id="Div1" style="float:right;border:1;"> <button  id = "examine" style="height:40px; width:100px" class=" btn-inverse " >
-                                    <i class="icon-edit icon-blue"></i>
-                                    审核</button>
-                    </div>
+                  
                       <div id="Div2" style="float:right;border:1;"> <button  id = "unfreeze" style="height:40px; width:100px" class="btn-large " >
                                     <i class="icon-edit icon-blue"></i>
                                     解冻</button>
+                    </div>
+                      <div id="Div1" style="float:right;border:1;"> <button  id = "examine" style="height:40px; width:100px" class=" btn-inverse " >
+                                    <i class="icon-edit icon-blue"></i>
+                                    审核</button>
                     </div>
                     </div>
 
@@ -793,6 +794,8 @@
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
                                 var username = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-warning\">冻结</span>");
                                 $.ajax(
@@ -844,6 +847,8 @@
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
                                 var username = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
                                 $.ajax(
@@ -896,6 +901,8 @@
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
                                 var username = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-success\">正常</span>");
                                 $.ajax(
@@ -930,6 +937,8 @@
                             var obj = $(el[i]);
                             if ($(el[i]).parent().hasClass('checked')) {
                                 var username = el[i].value;
+                                $(el[i]).parent().removeClass("checked");
+                                el[i].checked = false;
                                 var obj = $(el[i]);
                                 $(obj.parents("tr").children("td")[4]).html("<span class=\"label label-info\">审核未通过</span>");
                                 $.ajax(
