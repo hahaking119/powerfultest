@@ -73,10 +73,10 @@
 			
 			<div class="row-fluid">
 		<div class="well span5 center login-box">
-					<div class="alert alert-info">
+					<div id ="modify" class="alert alert-info">
 						请输入你的用户名和密码
 					</div>
-				<form method=post action=login.aspx id=loginfrm>
+				
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="" />
@@ -98,7 +98,7 @@
 							<button id="login" class="btn btn-primary">登陆</button>
 							</p>
 						</fieldset>
-                        </form>
+                        
 					
 				</div><!--/span-->
 			</div><!--/row-->
@@ -185,10 +185,10 @@
 
             $("#login").click(function () {
 
-                $("#loginfrm").submit();
+               
                 var username = document.getElementById('username').value;
                 var password = document.getElementById('password').value;
-
+                var modify = document.getElementById('modify');
 
                 $.ajax({
                     type: "Post",
@@ -204,7 +204,7 @@
                             window.location.href = '../main.aspx';
 
                         else
-                            alert("账号密码错误或者账号已被冻结，请重新输入");
+                            $('#modify').html("<div id =\"modify\" class=\"alert alert-info\"><font color=\"#FF0000\">用户名或密码错误，请重新输入!</font><div>");
 
                     },
                     error: function (err) {
