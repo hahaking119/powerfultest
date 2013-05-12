@@ -92,7 +92,7 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
+						<i class="icon-user"></i><span class="hidden-phone"> <%=SuperUserName %></span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -127,11 +127,14 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main</li>
 						<li><a class="ajax-link" href="main.aspx"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
-						<li><a class="ajax-link" href="admin.aspx"><i class="icon-eye-open"></i><span class="hidden-tablet"> 管理员管理</span></a></li>
-						<li><a class="ajax-link" href="user.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> 用户管理</span></a></li>
+						<%if (UserRank == "4")
+        { %>
+                        <li><a class="ajax-link" href="admin.aspx"><i class="icon-eye-open"></i><span class="hidden-tablet"> 管理员管理</span></a></li>
+						<%} %>
+                        <li><a class="ajax-link" href="user.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> 用户管理</span></a></li>
 						<li><a class="ajax-link" href="route.aspx"><i class="icon-list-alt"></i><span class="hidden-tablet"> 路线管理</span></a></li>
 						<li><a class="ajax-link" href="contract.aspx"><i class="icon-folder-open"></i><span class="hidden-tablet"> 合同管理</span></a></li>
-						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
+						<%--<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
 						<li class="nav-header hidden-tablet">Sample Section</li>
 						<li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
 						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
@@ -140,7 +143,7 @@
 						<li><a href="tour.html"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
 						<li><a class="ajax-link" href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
 						<li><a href="error.html"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>--%>
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
 				</div><!--/.well -->
@@ -215,7 +218,7 @@
 								  <th>发布时间</th>
 								  <th>路线发布公司</th>
 								  <th>状态</th>
-                                  <th>合同状态</th>
+<%--                                  <th>合同状态</th>--%>
 								  <th>管理</th>
                                   
 							  </tr>
@@ -251,24 +254,32 @@
                                    <%} %>
 
 
-								 <td> <%if (ListRoute[i].ContractState == "已签署")
+								<%-- <td> <%if (ListRoute[i].ContractState == "已签署")
                                   {%>  
-                                    <a href="ContractSubmit.aspx" target="_blank"  data-content="合同已签署，点击查看合同内容" title="请点击！" data-rel="popover" class="label label-success">
+                                    <a href="contract.aspx?id=<%=ListRoute[i].RouteId %>" target="_blank"  data-content="合同已签署，点击查看合同内容" title="请点击！" 
+                                        data-rel="popover" class="label label-success">
                                      <i class="icon-eye-open icon-white"></i>
-                                     已签署</a> </td>
+                                     已签署
+                                    <%-- <asp:HiddenField ID = "HiddenField" runat="server" value="<%=ListRout[i].RoutId %>"></asp:HiddenField>--%>
+                                <%--     </a> </td>
+                                  
+                                    
                                     <%}                               
                                   else if (ListRoute[i].RouteState == "未签署")
                                   {%>
-                                  <a href="ContractSubmit.aspx" target="_blank" data-content="合同已订立，但是尚未签署，点击查看合同内容" title="请点击！"data-rel="popover" class="label label-info">
+                                  <a href="contract.aspx?id=<%=ListRoute[i].RouteId %>" target="_blank" data-content="合同已订立，但是尚未签署，点击查看合同内容" title="请点击！"data-rel="popover" class="label label-info">
                                   <i class="icon-eye-open icon-white"></i>
-                                  未签署</a> </td>
+                                  未签署--%>
+                                  <%--<asp:HiddenField ID = "HiddenField1" runat="server" value=<%=ListRout[i].RoutId %>></asp:HiddenField>--%>
+                                  <%--</a> </td>
+                                  
                                    <%}
                                   else
                                   {%>
                                    <a href="#" target="_blank" title="尚未起草或签订合同，点击无效" data-rel="tooltip" class="label label-warning">
                                    <i class="icon-remove icon-white"></i>
                                    未订立</a> </td>
-                                   <%} %></td>
+                                   <%} %></td>--%>
 
 								<td class="center">
                                      <a href="RouteDetail.aspx" target="_blank" >

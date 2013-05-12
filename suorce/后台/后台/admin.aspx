@@ -98,7 +98,7 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
+						<i class="icon-user"></i><span class="hidden-phone"> <%=SuperUserName %></span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -134,8 +134,8 @@
 						<li><a class="ajax-link" href="user.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> 用户管理</span></a></li>
 						<li><a class="ajax-link" href="route.aspx"><i class="icon-list-alt"></i><span class="hidden-tablet"> 路线管理</span></a></li>
 						<li><a class="ajax-link" href="contract.aspx"><i class="icon-folder-open"></i><span class="hidden-tablet"> 合同管理</span></a></li>
-						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
-						<li class="nav-header hidden-tablet">Sample Section</li>
+						<%--<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>--%>
+						<%--<li class="nav-header hidden-tablet">Sample Section</li>
 						<li class="active"><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
 						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						<li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
@@ -143,10 +143,41 @@
 						<li><a href="tour.html"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
 						<li><a class="ajax-link" href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
 						<li><a href="error.html"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>--%>
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
 				</div><!--/.well -->
+                </br>
+             <div id="register">
+            <div>
+				<ul class="breadcrumb">
+					<li>
+						新增管理员
+					</li>
+					
+				</ul>
+			</div>
+            <div id ="modify" class="alert alert-info" style="width:100px;">
+						<center>请输入新的用户名和密码</center>
+					</div>
+            <fieldset>
+			 <div  id="registerinput" style="width:160px;float:left" >
+                <div class="input-prepend" title="Adminname" data-rel="tooltip">
+			    <span class="add-on"><i class="icon-user"></i></span><input class="input-large span10"  name="adminname" id="username" type="text" value="" />
+			    </div>
+			    <div class="clearfix"></div>
+                <div class="input-prepend" title="Password" data-rel="tooltip">
+			    <span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="" />
+			    </div>
+			    <div class="clearfix"></div>
+             </div>
+             <div id="registersubmit" style="float:left">
+             <p class="center span5"  style="width:100px">
+			 <button id="tianjia" class="btn btn-primary" style="margin-top:20px">添加管理员</button>
+			 </p>
+             </div>
+             </fieldset>
+            </div>
 			</div><!--/span-->
 			<!-- left menu ends -->
 			
@@ -293,9 +324,9 @@
 				</div><!--/span-->
 			
 			</div><!--/row-->
-
-			
-    
+<%--************************************************************新增管理员--%>
+            
+  <%--************************************************************新增管理员end--%>  
 					<!-- content ends -->
 			</div><!--/#content.span10-->
 				</div><!--/fluid-row-->
@@ -435,8 +466,55 @@
            });
        });
     </script> 
+ <%--************************************************************新增管理员script--%>
+  <script type="text/javascript" language="javascript">
+      $(function () {
 
- 
+          $("#tianjia").click(function () {
+
+
+              var username = document.getElementById('username').value;
+              var password = document.getElementById('password').value;
+              var modify = document.getElementById('modify');
+              //              $("#msg").show();
+              //              $("#dialog-confirm").dialog({
+              //                  resizable: false,
+              //                  height: 140,
+              //                  modal: true,
+              //                  buttons: {
+              //                      "冻结": function () {
+              $.ajax({
+                  type: "Post",
+                  url: "admin.aspx/register",
+                  data: "{ 'str1':'" + username + "' , 'str2': '" + password + "' }",
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (data) {
+                      //返回的数据用data.d获取内容      
+                      //$("#look").load("shuaxin.aspx");
+                      if (data.d == "success") {
+                          $('#modify').html("<div id =\"modify\" class=\"alert alert-info\"><font color=\"#009966\">管理员添加成功!</font><div>");
+                          window.location.href = '../admin.aspx';
+                      }
+
+                      else
+                          $('#modify').html("<div id =\"modify\" class=\"alert alert-info\"><font color=\"#FF0000\">用户名已经存在，请重新输入!</font><div>");
+                  },
+                  error: function (err) {
+                      alert(err);
+                  }
+              });
+              //      $(this).dialog("close");
+              //                      },
+
+              //                      "取消": function () {
+              //                          $(this).dialog("close");
+              //                      }
+              //                  }             
+              //          });
+          });
+      });
+  </script>
  
    <%-- *********************************************************冻结响应script****************--%>
 <script type="text/javascript" language="javascript">

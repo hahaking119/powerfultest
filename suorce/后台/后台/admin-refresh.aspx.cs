@@ -43,7 +43,7 @@ namespace 后台
                 u.UserName = reader["UserName"].ToString();
                 u.Date = reader["Date"].ToString();
                 u.Rank = reader["Rank"].ToString();
-                u.UserState = reader["UserState"].ToString();
+                u.UserState = reader["State"].ToString();
                 listUser.Add(u);
                
               /*  TextBox1.Text = reader["UserName"].ToString();*/
@@ -66,7 +66,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText=("update [User] set UserState='冻结' where UserName='"+str+"'");
+            cmdfreeze.CommandText=("update [User] set State='冻结' where UserName='"+str+"'");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
             
@@ -80,7 +80,7 @@ namespace 后台
              SqlCommand cmdfreeze = new SqlCommand();
              cmdfreeze.Connection = conn;
              conn.Open();
-             cmdfreeze.CommandText = ("update [User] set UserState='正常' where UserName='" + str + "'");
+             cmdfreeze.CommandText = ("update [User] set State='正常' where UserName='" + str + "'");
              cmdfreeze.ExecuteNonQuery();
              conn.Close();
 

@@ -22,7 +22,8 @@ namespace 后台
             public string ContractState;
         }
     public partial class WebForm5 : System.Web.UI.Page
-    {
+    { 
+        
         public static string RouteName;
         public static string RouteStartTime;
         public static string RouteDays;
@@ -31,7 +32,8 @@ namespace 后台
         public static string RouteType;
         public static string RouteState;
         public static string RouteDetails;
-        public static string ContractState;
+        public static string[] PlaceId = new string[20]; 
+        public static string[] ContractState=new string[20] ;
         public static string[] PlaceDays = new string[20];
         public static string[] PlacePrice = new string[20];
         public static string[] PlaceStartTime= new string[20];
@@ -43,27 +45,40 @@ namespace 后台
         public static int i;
         public static int length;
         public List<Routesys> ListRoute=new List<Routesys>();
-
+        public string SuperUserName;
+        public string UserRank;
         protected void Page_Load(object sender, EventArgs e)
         {
+            string susername = Session["susername"].ToString();
+            SuperUserName = susername;
            SqlConnection conn = new SqlConnection(StrConn);
             conn.Open();
-            
+            SqlCommand cmdd = new SqlCommand();
+            cmdd.Connection = conn;
+            cmdd.CommandText = "Select Rank FROM [User] Where UserName='" + susername + "'";
+            SqlDataReader readerd = cmdd.ExecuteReader();
+            while (readerd.Read())
+            {
+                UserRank = readerd["Rank"].ToString();
+            }
+            readerd.Close();
+            conn.Close();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "Select [route].*,CompanyName from [Route],[UserDetail] Where [Route].UserId =[UserDetail].UserId";
+            conn.Open();
+            cmd.CommandText = "Select [Route].*,CompanyName from [Route],[UserDetail] Where [Route].UserDetailId =[UserDetail].UserDetailId";
             SqlDataReader reader = cmd.ExecuteReader();
               while (reader.Read())
             {
                 Routesys r = new Routesys();
                 r.RouteId=reader["RouteId"].ToString();
-                r.UserId=reader["UserId"].ToString();
+              //  r.UserId=reader["UserId"].ToString();
                 r.RouteName=reader["RouteName"].ToString();
                 r.CompanyName=reader["CompanyName"].ToString();
-                r.Pubdate=reader["Pubdate"].ToString();
+                r.Pubdate=reader["PostTime"].ToString();
                 r.RouteState=reader["RouteState"].ToString();
-                r.RouteDetails = reader["RouteDetails"].ToString();
-                r.ContractState = reader["ContractState"].ToString();
+                r.RouteDetails = reader["RouteDetail"].ToString();
+               // r.ContractState = reader["ContractState"].ToString();
                 ListRoute.Add(r);
             }
             reader.Close();
@@ -94,21 +109,23 @@ namespace 后台
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+
                 RouteName=reader["RouteName"].ToString();
                 RouteStartTime=reader["StartTime"].ToString();
-                RouteDays=reader["RouteDays"].ToString();
-                Pubdate=reader["Pubdate"].ToString();
+                RouteDays=reader["LastDays"].ToString();
+                Pubdate=reader["PostTime"].ToString();
                 //CompanyName=reader["CompanyName"].ToString();
                 RouteType=reader["RouteType"].ToString();
                 RouteState=reader["RouteState"].ToString();
-                RouteDetails = reader["RouteDetails"].ToString();
-                ContractState = reader["ContractState"].ToString();
+                RouteDetails = reader["RouteDetail"].ToString();
+                PlaceId[i] = reader["PlaceId"].ToString();
+                ContractState[i] = reader["ContractState"].ToString();
                 PlaceName[i] = reader["PlaceName"].ToString();
-                PlaceStartTime[i] = reader["PlaceStartTime"].ToString();
-                PlacePrice[i] = reader["PlacePrice"].ToString();
-                PlaceDays[i] = reader["PlaceDays"].ToString();
-                PlaceDetail[i] = reader["PlaceDetail"].ToString();
-                PlacePnum[i] = reader["PlacePnum"].ToString();
+                PlaceStartTime[i] = reader["StartTime"].ToString();
+                PlacePrice[i] = reader["Price"].ToString();
+                PlaceDays[i] = reader["Days"].ToString();
+                PlaceDetail[i] = reader["PlaceDescription"].ToString();
+                PlacePnum[i] = reader["PersonNumber"].ToString();
                 i++;
             }
             for (int j = 0; j < PlaceName.Length ; j++)

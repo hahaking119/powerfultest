@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Collections;
 using System.Web.Services;
+using System.Windows.Forms;
 namespace 后台
 {
 
@@ -32,11 +33,16 @@ namespace 后台
        // public string[] UserState = new string[2000];
        //public  ArrayList arll = new ArrayList();
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-
+        public string SuperUserName;
+            
         public List<usersys> listUser = new List<usersys>();
         public void Page_Load(object sender, EventArgs e)
-        {        
+        {
+            string susername = Session["susername"].ToString();
+            SuperUserName = susername;
             //int i = 0;
+         //   string superUserName=Session["UserName"]==null?"":Session["UserName"].ToString();
+           // SuperUserName = Session["UserName"] == null ? "" : Session["susername"].ToString();
             SqlConnection conn = new SqlConnection(StrConn);
             conn.Open();
             //MessageBox.Show("数据库连接成功", "好");
@@ -53,7 +59,7 @@ namespace 后台
                 u.Date = reader["Date"].ToString();
                 if (reader["Rank"].ToString() == "3") 
                 u.Rank = "管理员";
-                u.UserState = reader["UserState"].ToString();
+                u.UserState = reader["State"].ToString();
                 listUser.Add(u);
                
               /*  TextBox1.Text = reader["UserName"].ToString();*/
@@ -76,7 +82,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText=("update [User] set UserState='冻结' where UserName='"+str+"'");
+            cmdfreeze.CommandText=("update [User] set State='冻结' where UserName='"+str+"'");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
             
@@ -90,7 +96,7 @@ namespace 后台
              SqlCommand cmdfreeze = new SqlCommand();
              cmdfreeze.Connection = conn;
              conn.Open();
-             cmdfreeze.CommandText = ("update [User] set UserState='正常' where UserName='" + str + "'");
+             cmdfreeze.CommandText = ("update [User] set State='正常' where UserName='" + str + "'");
              cmdfreeze.ExecuteNonQuery();
              conn.Close();
 
@@ -109,6 +115,60 @@ namespace 后台
 
              return "success";
          }
-
+          
+          [WebMethod]
+          public static string register(string str1, string str2)
+          {
+             
+              SqlConnection con = new SqlConnection(StrConn);
+              SqlCommand cmd = new SqlCommand();
+              cmd.Connection = con;
+              cmd.CommandText = "select count (*) from [User] where UserName='" + str1 + "'";
+              con.Open();
+              int n = int.Parse(cmd.ExecuteScalar().ToString());
+              con.Close();
+              if (n == 0)
+              {
+                  
+                  SqlCommand cmdid = new SqlCommand();
+                  cmdid.Connection = con;
+                  cmdid.CommandText = "select isnull(max(UserId),0)+1 from [User]";
+                  con.Open();
+                  int maxid;
+                  try
+                  {
+                      maxid = Convert.ToInt32(cmdid.ExecuteScalar());
+                  }
+                  catch
+                  {
+                      maxid = 1;
+                  }
+                  DateTime date = DateTime.Now;
+                  SqlCommand cmdinsert = new SqlCommand();
+                  cmdinsert.Connection = con;
+                  cmdinsert.CommandText = "SET IDENTITY_INSERT [User] ON Insert into [User](UserId,UserName,PassWord,Rank,Date,State) Values(@UserId,@UserName,@PassWord,@Rank,@Date,@State)";
+                  cmdinsert.Parameters.Add("@UserId", SqlDbType.Int);
+                  cmdinsert.Parameters.Add("@UserName", SqlDbType.NVarChar);
+                  cmdinsert.Parameters.Add("@PassWord", SqlDbType.NVarChar);
+                  cmdinsert.Parameters.Add("@Rank", SqlDbType.Int);
+                  cmdinsert.Parameters.Add("@Date", SqlDbType.DateTime);
+                  cmdinsert.Parameters.Add("@State", SqlDbType.NVarChar);
+                  cmdinsert.Parameters["@UserId"].Value = maxid;
+                  cmdinsert.Parameters["@UserName"].Value = str1;
+                  cmdinsert.Parameters["@PassWord"].Value = str2;
+                  cmdinsert.Parameters["@Rank"].Value = 3;
+                  cmdinsert.Parameters["@Date"].Value = date;
+                  cmdinsert.Parameters["@State"].Value = "正常";
+                  cmdinsert.ExecuteNonQuery();
+                  con.Close();
+                  return "success";
+              }
+              else { return "False"; }
+            
+              //Session["UserName"] = 
+              //   HttpContext.Current.Session["suername"] = str1;
+              //  HttpContext.Current.Server.Transfer("admin.aspx");
+              //     SUserName = str1;
+          }
     }
 }

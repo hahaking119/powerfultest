@@ -44,9 +44,26 @@ namespace 后台
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
 
         public List<usersys> listUser = new List<usersys>();
+        public string SuperUserName;
+        public string UserRank;
         //public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
         public void Page_Load(object sender, EventArgs e)
         {
+            string susername = Session["susername"].ToString();
+            SuperUserName = susername;
+            SqlConnection conn = new SqlConnection(StrConn);
+            conn.Open();
+
+            SqlCommand cmdd = new SqlCommand();
+            cmdd.Connection = conn;
+            cmdd.CommandText = "Select Rank FROM [User] Where UserName='" + susername + "'";
+            SqlDataReader readerr = cmdd.ExecuteReader();
+            while (readerr.Read())
+            {
+                UserRank = readerr["Rank"].ToString();
+            }
+            readerr.Close();
+            conn.Close();
             load();
         }
         [WebMethod]
@@ -71,7 +88,7 @@ namespace 后台
                 { u.Rank = "普通会员"; }
                 else
                 { u.Rank = "VIP会员"; }
-                u.UserState = reader["UserState"].ToString();
+                u.UserState = reader["State"].ToString();
                 listUser.Add(u);
 
                 /*  TextBox1.Text = reader["UserName"].ToString();*/
@@ -95,7 +112,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText = ("update [User] set UserState='冻结' where UserName='" + str + "'");
+            cmdfreeze.CommandText = ("update [User] set State='冻结' where UserName='" + str + "'");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
 
@@ -109,7 +126,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText = ("update [User] set UserState='正常' where UserName='" + str + "'");
+            cmdfreeze.CommandText = ("update [User] set State='正常' where UserName='" + str + "'");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
 
@@ -135,7 +152,7 @@ namespace 后台
             SqlCommand cmdfreeze = new SqlCommand();
             cmdfreeze.Connection = conn;
             conn.Open();
-            cmdfreeze.CommandText = ("update [User] set UserState='审核未通过' where UserName='" + str + "'");
+            cmdfreeze.CommandText = ("update [User] set State='审核未通过' where UserName='" + str + "'");
             cmdfreeze.ExecuteNonQuery();
             conn.Close();
 

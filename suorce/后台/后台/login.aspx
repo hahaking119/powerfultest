@@ -72,11 +72,22 @@
 			</div><!--/row-->
 			
 			<div class="row-fluid">
-		<div class="well span5 center login-box">
+	       <div class="well span5 center login-box">
+        
 					<div id ="modify" class="alert alert-info">
 						请输入你的用户名和密码
 					</div>
-				
+                    
+                    <%--<div style="height:30px;">
+                    <form action=login.aspx>
+				    <label for="superadmin" style="width:100px;float:left;margin-left:100px;"><input type="radio" name="rank" id="superadmin" />超级管理员</label>
+                    
+                    <label for="admin" style="width:100px;float:right;margin-right:100px;"><input type="radio" name="rank" id="admin" />管理员</label>
+                     </form>
+                    </div>--%>
+                  
+                    
+                    <div style="width:300px;margin-left:100px;">
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="" />
@@ -99,7 +110,7 @@
 							</p>
 						</fieldset>
                         
-					
+				</div>
 				</div><!--/span-->
 			</div><!--/row-->
 				</div><!--/fluid-row-->
@@ -188,6 +199,7 @@
                
                 var username = document.getElementById('username').value;
                 var password = document.getElementById('password').value;
+                
                 var modify = document.getElementById('modify');
 
                 $.ajax({

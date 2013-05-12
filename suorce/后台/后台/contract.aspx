@@ -83,7 +83,7 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
+						<i class="icon-user"></i><span class="hidden-phone"> <%=SuperUserName %></span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
@@ -115,11 +115,14 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Main</li>
 						<li><a class="ajax-link" href="main.aspx"><i class="icon-home"></i><span class="hidden-tablet"> 首页</span></a></li>
-						<li><a class="ajax-link" href="admin.aspx"><i class="icon-eye-open"></i><span class="hidden-tablet"> 管理员管理</span></a></li>
-						<li><a class="ajax-link" href="user.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> 用户管理</span></a></li>
+						<%if (UserRank == "4")
+        { %>
+                        <li><a class="ajax-link" href="admin.aspx"><i class="icon-eye-open"></i><span class="hidden-tablet"> 管理员管理</span></a></li>
+						<%} %>
+                        <li><a class="ajax-link" href="user.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> 用户管理</span></a></li>
 						<li><a class="ajax-link" href="route.aspx"><i class="icon-list-alt"></i><span class="hidden-tablet"> 路线管理</span></a></li>
 						<li><a class="ajax-link" href="contract.aspx"><i class="icon-folder-open"></i><span class="hidden-tablet"> 合同管理</span></a></li>
-						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
+						<%--<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
 						<li class="nav-header hidden-tablet">Sample Section</li>
 						<li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
 						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
@@ -128,7 +131,7 @@
 						<li><a href="tour.html"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
 						<li><a class="ajax-link" href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
 						<li><a href="error.html"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+						<li><a href="login.aspx"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>--%>
 					</ul>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
 				</div><!--/.well -->
@@ -176,17 +179,23 @@
 				</div><!--/span-->
 			
 			</div><!--/row-->
-
+            <div id="swf">
+              <center>
+                 <embed id="flashContainer" src="<%=FilePath %>" width="80%" height="550px;"></embed>
+              </center>
+            </div>
 		
 					<!-- content ends -->
 			</div><!--/#content.span10-->
-				</div>
-            <asp:DataList ID="DataList1" runat="server">
+             
+			</div>
+           
+            <%--<asp:DataList ID="DataList1" runat="server">
             </asp:DataList>
 					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><a class="ajax-link" href="gallery.html"><span class="hidden-tablet"> 
             <asp:Label ID="lbTestString" runat="server"></asp:Label>
-            <asp:Button ID="btnOpen" runat="server" onclick="btnOpen_Click" Text="Button" />
-            </span></a></label>
+            <asp:Button ID="btnOpen" runat="server" onclick="btnOpen_Click" Text="Button" />--%>
+            <%--</span></a></label>--%>
             <!--/fluid-row-->
 				
 		<div class="modal hide fade" id="myModal">
