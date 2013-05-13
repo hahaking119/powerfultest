@@ -64,6 +64,7 @@ namespace 后台
             }
             readerr.Close();
             conn.Close();
+           
             load();
         }
         [WebMethod]

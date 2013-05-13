@@ -18,6 +18,7 @@ namespace 后台
         public string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
         public string SuperUserName;
         public string UserRank;
+        public string Url;
         protected void Page_Load(object sender, EventArgs e)
         {
             ////此乃获得所有合同的方法，获得的结果存储在fileinfo类型的数组ff里
@@ -47,21 +48,27 @@ namespace 后台
             }
             readerr.Close();
             conn.Close();
-            int Id = int.Parse(HttpContext.Current.Request.QueryString["id"]==null?"0":HttpContext.Current.Request.QueryString["id"]);
+
+      //      int Id = int.Parse(HttpContext.Current.Request.QueryString["id"]==null?"0":HttpContext.Current.Request.QueryString["id"]);
+            int Id = int.Parse(Request.QueryString["id"]);
             SqlConnection con = new SqlConnection(StrConn);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandText = "select ContractUrl from [Contract] where ContractId=(Select ContractId from [Place] where PlaceId =" + Id + ")";
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
+            
             while (reader.Read())
             {
-                string Url = reader["ContractUrl"].ToString();
+                Url = reader["ContractUrl"].ToString();
             }
             reader.Close();
             con.Close();
-           // string fullPath = Url;
-
+            string fullPath = Url;
+            string str=Url.Substring(Url.IndexOf(".")+1);
+            string swfPath = str + ".swf";
+            //this.ConvertToSWF(fullPath, swfPath);
+            FilePath = "Files\\test.swf";
            // MessageBox.Show(Id); 
         }
         public void ConvertToSWF(string oldFile, string swfFile)

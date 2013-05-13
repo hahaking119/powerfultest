@@ -52,10 +52,11 @@ namespace 后台
             string susername = Session["susername"].ToString();
             SuperUserName = susername;
            SqlConnection conn = new SqlConnection(StrConn);
-            conn.Open();
+         //   conn.Open();
             SqlCommand cmdd = new SqlCommand();
             cmdd.Connection = conn;
             cmdd.CommandText = "Select Rank FROM [User] Where UserName='" + susername + "'";
+            conn.Open();
             SqlDataReader readerd = cmdd.ExecuteReader();
             while (readerd.Read())
             {
