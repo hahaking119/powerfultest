@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Free HTML5 Bootstrap Admin Template</title>
+	<title>旅游同业B2B交易平台</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -58,7 +58,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>炮否</span></a>
+				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Power</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -179,11 +179,13 @@
 				</div><!--/span-->
 			
 			</div><!--/row-->
-            <div id="swf">
-              <center>
-                 <embed id="flashContainer" src="<%=FilePath %>" width="80%" height="550px;"></embed>
-              </center>
+            <div id="pdf">
+             <center>
+                 <%--<embed id="flashContainer" src="<%=FilePath %>" width="80%" height="550px;"></embed>--%>
+                 <iframe src="doc/test1.pdf" width="1000px;" height="700px;"></iframe>
+             </center>
             </div>
+            
            <%-- <script type="text/javascript" src="pdfobject.js"></script>--%>
 		    <%--<div>
              <object data="doc/test.pdf"  width="600px;" height="400px;">
@@ -218,8 +220,8 @@
 
 		<hr>
 		<footer>
-			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
-			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
+			<p class="pull-left">&copy; <a href="#" target="_blank">Power Tech</a> 2013</p>
+			<p class="pull-right">Powered by: <a href="#">Power科技</a></p>
 		</footer>
 		
 	</div><!--/.fluid-container-->

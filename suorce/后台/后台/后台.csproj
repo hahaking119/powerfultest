@@ -471,6 +471,7 @@
     <None Include=".htaccess" />
     <None Include="doc\css\img\Thumbs.db" />
     <None Include="doc\test.pdf" />
+    <None Include="doc\test1.pdf" />
     <None Include="doc\Thumbs.db" />
     <None Include="img\ajax-loaders\Thumbs.db" />
     <None Include="img\gallery\Thumbs.db" />

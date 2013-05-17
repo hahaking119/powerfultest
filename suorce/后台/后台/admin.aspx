@@ -73,7 +73,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png"> <span>炮否</span></a>
+				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png"> <span>Power</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container">
@@ -349,8 +349,8 @@
 
 		<hr>
 		<footer>
-			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
-			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
+			<p class="pull-left">&copy; <a href="#" target="_blank">Power Tech</a> 2013</p>
+			<p class="pull-right">Powered by: <a href="#">Power科技</a></p>
        
 		</footer>
 		

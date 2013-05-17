@@ -60,7 +60,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>炮否</span></a>
+				<a class="brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" /> <span>Power</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container" >
@@ -196,7 +196,7 @@
 				
 				<div class="box">
 					<div class="box-header well">
-						<h2><i class="icon-list-alt"></i> 流量统计</h2>
+						<h2><i class="icon-list-alt"></i> 新增用户统计</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -209,7 +209,7 @@
 					</div>
 				</div>
 				
-				<div class="box">
+				<%--<div class="box">
 					<div class="box-header well">
 						<h2><i class="icon-list-alt"></i> 待定</h2>
 						<div class="box-icon">
@@ -221,11 +221,11 @@
 					<div class="box-content">
 						<div id="flotchart" class="center" style="height:300px"></div>
 					</div>
-				</div>
+				</div>--%>
 				
 				<div class="box">
 					<div class="box-header well">
-						<h2><i class="icon-list-alt"></i> 用户统计</h2>
+						<h2><i class="icon-list-alt"></i> 路线统计</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -302,8 +302,8 @@
 	</div><!--/fluid-row-->
 	<hr>
 		<footer>
-			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
-			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
+			<p class="pull-left">&copy; <a href="#" target="_blank">Power Tech</a> 2013</p>
+			<p class="pull-right">Powered by: <a href="#">Power科技</a></p>
 		</footer>
 		
 	</div><!--/.fluid-container-->

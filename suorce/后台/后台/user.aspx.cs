@@ -23,7 +23,15 @@ namespace 后台
     //    public string Phone;
     //    public string Description;
     //}
-       
+    public class usersyss
+    {
+
+        public string UserName;
+        public string CompanyNameOne;
+        public string Date;
+        public string Rank;
+        public string UserState;
+    }
 
     public partial class WebForm4 : System.Web.UI.Page
     {
@@ -43,7 +51,7 @@ namespace 后台
         public static string Description;
         public static string StrConn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
 
-        public List<usersys> listUser = new List<usersys>();
+        public List<usersyss> listUser = new List<usersyss>();
         public string SuperUserName;
         public string UserRank;
         //public static List<userdetailsys> listUserDetail = new List<userdetailsys>();
@@ -76,14 +84,15 @@ namespace 后台
             //MessageBox.Show("数据库连接成功", "好");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "Select * FROM [User] where [Rank]=1 or [Rank]=2";
+            cmd.CommandText = "Select [User].*,CompanyName FROM [User],[UserDetail] where ([Rank]=1 or [Rank]=2) and [UserDetail].UserId=[User].UserId";
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
 
-                usersys u = new usersys();
+                usersyss u = new usersyss();
                 u.UserName = reader["UserName"].ToString();
+                u.CompanyNameOne = reader["CompanyName"].ToString();
                 u.Date = reader["Date"].ToString();
                 if (reader["Rank"].ToString() == "1")
                 { u.Rank = "普通会员"; }

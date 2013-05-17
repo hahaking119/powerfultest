@@ -30,6 +30,11 @@
     <link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
     <!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
+    <style>
+   .bg{display:none;position:fixed;width:100%;height:100%;background:#000;z-index:2;top:0;left:0;opacity:0.7;}
+
+  </style>
+
 	<style type="text/css">
 	  body {
 		padding-bottom: 40px;
@@ -44,12 +49,14 @@
      padding:3px; 
      margin:5px; 
      display:none; 
+     z-index:10;
      } 
      .content{ 
      height:400px; 
      background-color:#FFF; 
      font-size:14px; 
      overflow:auto; 
+     z-index:10;
      } 
      .title{ 
          padding:2px; 
@@ -103,7 +110,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png"> <span>炮否</span></a>
+				<a class="brand" href="main.aspx"> <img alt="Charisma Logo" src="img/logo20.png"> <span>Power</span></a>
 				
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container">
@@ -248,6 +255,7 @@
 							  <tr>
                                   <th>选择</th>
 								  <th>用户账户名</th>
+                                  <th>用户公司名</th>
 								  <th>注册日期</th>
 								  <th>类型</th>
 								  <th id="state">状态</th>
@@ -264,6 +272,7 @@
                                 <tr>
                                 <td id="quanxuan"><input type="checkbox" name="choose" value="<%=listUser[i].UserName%>"/></td>
 								<td><%=listUser[i].UserName%></td>
+                                <td><%=listUser[i].CompanyNameOne %></td>
 								<td class="center" ><%=listUser[i].Date%></td>
 								<td class="center"><%=listUser[i].Rank%></td>
 								<td class="center">
@@ -351,11 +360,12 @@
 				<a href="#" class="btn btn-primary">Save changes</a>
 			</div>
 		</div>
+        <div  class="bg"></div>
 
 			<hr>
 		<footer>
-			<p class="pull-left">&copy; <a href="#" target="_blank">Powerful Tech</a> 2013</p>
-			<p class="pull-right">Powered by: <a href="#">炮否科技</a></p>
+			<p class="pull-left">&copy; <a href="#" target="_blank">Power Tech</a> 2013</p>
+			<p class="pull-right">Powered by: <a href="#">Power科技</a></p>
 		</footer>
 		
 	</div><!--/.fluid-container-->
@@ -604,6 +614,7 @@
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (data) {
+                 $('.bg').fadeIn(200);
                      //返回的数据用data.d获取内容 
                      var results = data.d.split("#");
                      var content = ["<h1 class=\"center\">公司名称：", results[0], "<small>用户名：" + username + "</small></h1>",
@@ -974,6 +985,7 @@
    
    
     </script>
+    
 <script type="text/javascript">
     //获取窗口的高度 
     var windowHeight;
@@ -1007,10 +1019,41 @@
         closeWindow();
     } 
 </script>
+  <style>
+.bg{display:none;position:fixed;width:100%;height:100%;background:#000;z-index:10;top:0;left:0;opacity:0.7;}
+.content{display:none;width:700px;height:400px;position:fixed;top:50%;margin-top:-150px;background:#F2F2F2;z-index:50;left:40%;margin-left:-250px;}
+  </style>
+
+   <script>
+      $(function () {
+////           $('.click').click(function () {
+////               $('.bg').css({ 'display': 'block' });
+////               $('.content').css({ 'display': 'block' });
+////           });
+////           $('.bg').click(function () {
+////               $('.bg').css({ 'display': 'none' });
+////               $('.content').css({ 'display': 'none' });
+////           });
+//           $('.click1').click(function () {
+//               $('.bg').fadeIn(200);
+//               $('.content').fadeIn(400);
+//           });
+           $('.bg').click(function () {
+               $('.bg').fadeOut(800);
+               $('.content').fadeOut(800);
+           });
+           $('.obv').click(function () {
+               $('.bg').fadeOut(800);
+               $('.content').fadeOut(800);
+           });
+
+       });
+
+       </script>
  
  <div class="window" id="center"> 
  <div id="title" class="title">
-                            <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" />用户详情</div>
+                            <img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" class="obv"/>用户详情</div>
  <div class="box-content" id="pop-content"><h1 class="center" id="ruanko">
                     <%--     <h1>公司名称：<%= CompanyName%><small>用户名：莫雄剑</small></h1>
                         <br>

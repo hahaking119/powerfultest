@@ -348,19 +348,47 @@ function docReady(){
 	{
 		var sin = [], cos = [];
 
-		for (var i = 0; i < 14; i += 0.5) {
-			sin.push([i, i++]);
-			cos.push([i, 3]);
-		}
+		//for (var i = 1; i <= 30; ) {
+		//	sin.push([i, i++]);
+		//	cos.push([i, 3]);
+		//}
 
+
+		sin.push([1, 48]);
+		sin.push([2, 38]);
+		sin.push([3, 57]);
+		sin.push([4, 67]);
+		sin.push([5, 120]);
+		sin.push([6, 56]);
+		sin.push([7, 39]);
+		sin.push([8, 47]);
+		sin.push([9, 80]);
+		sin.push([10, 40]);
+		sin.push([11, 78]);
+		sin.push([12, 58]);
+
+
+		cos.push([1, 16]);
+		cos.push([2, 3]);
+		cos.push([3, 2]);
+		cos.push([4, 6]);
+		cos.push([5, 8]);
+		cos.push([6, 12]);
+		cos.push([7, 7]);
+		cos.push([8, 5]);
+		cos.push([9, 9]);
+		cos.push([10, 2]);
+		cos.push([11, 5]);
+		cos.push([12, 1]);
+		
 		var plot = $.plot($("#sincos"),
-			   [ { data: sin, label: "用户人数"}, { data: cos, label: "管理员人数" } ], {
+			   [ { data: sin, label: "新增用户人数"}, { data: cos, label: "新增管理员人数" } ], {
 				   series: {
 					   lines: { show: true  },
 					   points: { show: true }
 				   },
 				   grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#eee"] } },
-				   yaxis: { min: 0, max: 20 },
+				   yaxis: { min: 0, max: 150 },
 				   colors: ["#539F2E", "#3C67A5"]
 				 });
 
@@ -452,19 +480,28 @@ function docReady(){
 	if($("#stackchart").length)
 	{
 		var d1 = [];
-		for (var i = 0; i <= 10; i += 1)
+		for (var i = 1; i <= 12; i += 1)
 		d1.push([i, parseInt(Math.random() * 30)]);
 
 		var d2 = [];
-		for (var i = 0; i <= 10; i += 1)
+		for (var i = 1; i <= 12; i += 1)
 			d2.push([i, parseInt(Math.random() * 30)]);
 
 		var d3 = [];
-		for (var i = 0; i <= 10; i += 1)
+		for (var i = 1; i <= 12; i += 1)
 			d3.push([i, parseInt(Math.random() * 30)]);
 
 		var stack = 0, bars = true, lines = false, steps = false;
-
+		var plot = $.plot($("#stackchart"),
+			   [{ data: d1, label: "竞标路线数" }, { data: d2, label: "交易路线数" }, { data: d3, label: "发布路线数"}], {
+			       series: {
+			           bars: { show: true }
+			       //    points: { show: true }
+			       }
+			    //   grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#eee"]} },
+			    //   yaxis: { min: 0, max: 150 },
+			     //  colors: ["#539F2E", "#3C67A5"]
+			   });
 		function plotWithOptions() {
 			$.plot($("#stackchart"), [ d1, d2, d3 ], {
 				series: {

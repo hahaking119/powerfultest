@@ -64,29 +64,29 @@ namespace 后台
             }
             reader.Close();
             con.Close();
-            string fullPath = Url;
-            string str=Url.Substring(Url.IndexOf(".")+1);
-            string swfPath = str + ".swf";
+            //string fullPath = Url;
+            //string str=Url.Substring(Url.IndexOf(".")+1);
+            //string swfPath = str + ".swf";
             //this.ConvertToSWF(fullPath, swfPath);
-            FilePath = "Files\\test.swf";
+            FilePath = Url;
            // MessageBox.Show(Id); 
         }
-        public void ConvertToSWF(string oldFile, string swfFile)
-        {
-            System.Diagnostics.Process pc = new System.Diagnostics.Process();
-            pc.StartInfo.FileName = @"C:\Program Files\Macromedia\FlashPaper 2\FlashPrinter.exe";
-            pc.StartInfo.Arguments = string.Format("{0} -o {1}", oldFile, swfFile);
-            pc.StartInfo.CreateNoWindow = true;
-            pc.StartInfo.UseShellExecute = false;
-            pc.StartInfo.RedirectStandardInput = false;
-            pc.StartInfo.RedirectStandardOutput = false;
-            pc.StartInfo.RedirectStandardError = true;
-            pc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            pc.Start();
-            pc.WaitForExit();
-            pc.Close();
-            pc.Dispose();
-        }
+        //public void ConvertToSWF(string oldFile, string swfFile)
+        //{
+        //    System.Diagnostics.Process pc = new System.Diagnostics.Process();
+        //    pc.StartInfo.FileName = @"C:\Program Files\Macromedia\FlashPaper 2\FlashPrinter.exe";
+        //    pc.StartInfo.Arguments = string.Format("{0} -o {1}", oldFile, swfFile);
+        //    pc.StartInfo.CreateNoWindow = true;
+        //    pc.StartInfo.UseShellExecute = false;
+        //    pc.StartInfo.RedirectStandardInput = false;
+        //    pc.StartInfo.RedirectStandardOutput = false;
+        //    pc.StartInfo.RedirectStandardError = true;
+        //    pc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        //    pc.Start();
+        //    pc.WaitForExit();
+        //    pc.Close();
+        //    pc.Dispose();
+        //}
         //跳转到lbTestString.Text所指向的路径，此方法可以直接用
         //protected void btnOpen_Click(object sender, EventArgs e)
         //{
